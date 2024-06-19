@@ -16,6 +16,8 @@ Route::get('/dashboard', function () {
 Route::get('register', [RegisteredUserController::class, 'create'])->middleware(['auth', 'verified'])->name('register');
 Route::post('register', [RegisteredUserController::class, 'store'])->middleware(['auth', 'verified']);
 
+Route::resource('usuarios', UsuarioController::class)->middleware(['auth', 'verified']);
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

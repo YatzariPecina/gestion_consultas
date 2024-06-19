@@ -20,6 +20,24 @@
                     </x-nav-link>
                 </div>
 
+                @switch(Auth::user()->rol)
+                    @case('Administrador')
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                            <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios')">
+                                {{ __('Usuarios') }}
+                            </x-nav-link>
+                        </div>
+                    @break
+
+                    @case('Doctor')
+                    @break
+
+                    @case('Doctor')
+                    @break
+
+                    @default
+                @endswitch
+
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">

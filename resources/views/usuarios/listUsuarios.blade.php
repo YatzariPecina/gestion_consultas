@@ -1,75 +1,42 @@
 <x-app-layout>
-    <div class="mt-6 bg-white p-6 mx-6 mb-6 rounded-2xl drop-shadow-md">
-        Usuarios
+    <div class="mt-6 bg-white p-6 mx-6 mb-6 rounded-2xl drop-shadow-md flex justify-between items-center">
+        <h1 class="text-4xl font-extrabold">Usuarios</h1>
+        <a href="{{ route('register') }}" class= "bg-gradient-to-t from-[#60ECEC] to-[#A6FFAF] hover:bg-gradient-to-t hover:from-[#59d3d3] hover:to-[#9cf1a5] font-medium px-5 py-2.5 me-2 mb-2 focus:outline-none">Nuevo usuario</a>
     </div>
 
     <div class="mt-6 bg-white p-6 mx-6 mb-6 rounded-2xl drop-shadow-md">
-
-
         <div class="relative overflow-x-auto">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-900 uppercase dark:text-gray-400">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead class="text-xs text-gray-900 uppercase bg-gray-300">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Product name
+                            Nombre
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Color
+                            Rol
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Category
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Price
+                            Acciones
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white dark:bg-gray-800">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple MacBook Pro 17"
-                        </th>
-                        <td class="px-6 py-4">
-                            Silver
-                        </td>
-                        <td class="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td class="px-6 py-4">
-                            $2999
-                        </td>
-                    </tr>
-                    <tr class="bg-white dark:bg-gray-800">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Microsoft Surface Pro
-                        </th>
-                        <td class="px-6 py-4">
-                            White
-                        </td>
-                        <td class="px-6 py-4">
-                            Laptop PC
-                        </td>
-                        <td class="px-6 py-4">
-                            $1999
-                        </td>
-                    </tr>
-                    <tr class="bg-white dark:bg-gray-800">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Magic Mouse 2
-                        </th>
-                        <td class="px-6 py-4">
-                            Black
-                        </td>
-                        <td class="px-6 py-4">
-                            Accessories
-                        </td>
-                        <td class="px-6 py-4">
-                            $99
-                        </td>
-                    </tr>
+                    @foreach ($usuarios as $usuario)
+                        <tr class="bg-white">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                {{ $usuario->name }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ $usuario->rol }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="#" class="font-medium text-blue-600 hover:underline pr-2">Ver</a>
+                                <a href="#" class="font-medium text-blue-600 hover:underline pr-2">Editar</a>
+                                <a href="#" class="font-medium text-blue-600 hover:underline">Eliminar</a>
+
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

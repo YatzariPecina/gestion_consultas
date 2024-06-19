@@ -12,7 +12,9 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        return view('usuarios.listUsuarios');
+        return view('usuarios.listUsuarios', [
+            'usuarios' => User::latest()->paginate(4)
+        ]);
     }
 
     /**
