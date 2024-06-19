@@ -27,12 +27,27 @@
                                 {{ __('Usuarios') }}
                             </x-nav-link>
                         </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                            <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
+                                {{ __('Medicos') }}
+                            </x-nav-link>
+                        </div>
                     @break
 
                     @case('Doctor')
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                            <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
+                                {{ __('Medicos') }}
+                            </x-nav-link>
+                        </div>
                     @break
 
-                    @case('Doctor')
+                    @case('Recepcionista')
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                            <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
+                                {{ __('Medicos') }}
+                            </x-nav-link>
+                        </div>
                     @break
 
                     @default
@@ -58,7 +73,7 @@
 
                         <x-slot name="content">
                             <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
+                                {{ __('Perfil') }}
                             </x-dropdown-link>
 
                             <!-- Authentication -->
@@ -68,7 +83,7 @@
                                 <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('Cerrar sesion') }}
                                 </x-dropdown-link>
                             </form>
                         </x-slot>

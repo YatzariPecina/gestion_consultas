@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,7 @@ Route::get('register', [RegisteredUserController::class, 'create'])->middleware(
 Route::post('register', [RegisteredUserController::class, 'store'])->middleware(['auth', 'verified']);
 
 Route::resource('usuarios', UsuarioController::class)->middleware(['auth', 'verified']);
+Route::resource('medicos', MedicoController::class)->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

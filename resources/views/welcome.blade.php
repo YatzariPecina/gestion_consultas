@@ -32,7 +32,7 @@
                     @else
                         <a href="{{ route('login') }}"
                             class="rounded-md text-center px-3 py-2 text-black ring-1 ring-transparent transition hover:bg-gray-300 hover:text-black/70 focus:outline-none">
-                            Log in
+                            Iniciar sesion
                         </a>
                     @endauth
                 </nav>
