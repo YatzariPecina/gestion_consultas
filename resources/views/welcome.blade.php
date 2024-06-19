@@ -34,13 +34,6 @@
                             class="rounded-md text-center px-3 py-2 text-black ring-1 ring-transparent transition hover:bg-gray-300 hover:text-black/70 focus:outline-none">
                             Log in
                         </a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}"
-                                class="rounded-md text-center px-3 py-2 text-black ring-1 ring-transparent transition hover:bg-gray-300 hover:text-black/70 focus:outline-none">
-                                Register
-                            </a>
-                        @endif
                     @endauth
                 </nav>
             @endif
@@ -54,10 +47,8 @@
             </div>
         </main>
 
-
-
-        <footer class="bg-white rounded-lg shadow m-4">
-            <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+        <footer class="bg-white shadow">
+            <div class="w-full max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
                 <span class="text-sm text-gray-800 sm:text-center">© 2023 Hesiptial. All Rights Reserved.
                 </span>
                 <ul
