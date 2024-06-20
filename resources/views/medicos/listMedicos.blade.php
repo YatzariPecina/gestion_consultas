@@ -15,7 +15,16 @@
                             Nombre
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Rol
+                            Correo electronico
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Telefono
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Profesión
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Tipo de medico
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Acciones
@@ -25,11 +34,20 @@
                 <tbody>
                     @foreach ($medicos as $medico)
                         <tr class="bg-white">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            <th scope="row" class="px-6 py-4">
                                 {{ $medico->nombre }}
                             </th>
                             <td class="px-6 py-4">
+                                {{ $medico->correo }}
+                            </td>
+                            <th scope="row" class="px-6 py-4">
+                                {{ $medico->telefono }}
+                            </th>
+                            <td class="px-6 py-4">
                                 {{ $medico->profesion }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $medico->tipo_medico }}
                             </td>
                             <td class="px-6 py-4 flex flex-wrap">
                                 <a href="{{ route('medicos.show', $medico->id) }}"
@@ -47,6 +65,6 @@
                 </tbody>
             </table>
         </div>
-
+        {{ $medicos->links() }}
     </div>
 </x-app-layout>
