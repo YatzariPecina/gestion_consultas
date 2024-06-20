@@ -32,6 +32,11 @@
                                 {{ __('Medicos') }}
                             </x-nav-link>
                         </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                            <x-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
+                                {{ __('Agenda') }}
+                            </x-nav-link>
+                        </div>
                     @break
 
                     @case('Doctor')
@@ -40,12 +45,22 @@
                                 {{ __('Medicos') }}
                             </x-nav-link>
                         </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                            <x-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
+                                {{ __('Agenda') }}
+                            </x-nav-link>
+                        </div>
                     @break
 
                     @case('Recepcionista')
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
                             <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
                                 {{ __('Medicos') }}
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                            <x-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
+                                {{ __('Agenda') }}
                             </x-nav-link>
                         </div>
                     @break
@@ -114,6 +129,23 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
+        @if (Auth::user()->rol)
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios')">
+                    {{ __('Usuarios') }}
+                </x-responsive-nav-link>
+            </div>
+        @endif
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('medicos.index')" :active="request()->routeIs('medicos')">
+                {{ __('Medicos') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
+                {{ __('Agenda') }}
+            </x-responsive-nav-link>
+        </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
@@ -124,7 +156,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -134,7 +166,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                         onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Cerrar sesion') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

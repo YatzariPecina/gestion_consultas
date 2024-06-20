@@ -1,8 +1,8 @@
 <x-app-layout>
-    <div class="mt-6 bg-white p-6 mx-6 mb-6 rounded-2xl drop-shadow-md flex justify-between items-center">
-        <h1 class="text-4xl font-extrabold">Medicos</h1>
+    <div class="mt-6 bg-white p-6 mx-6 mb-6 rounded-2xl drop-shadow-md flex flex-col items-center sm:justify-between sm:flex-row">
+        <h1 class="text-4xl font-extrabold mb-2 text-center sm:mb-0">Medicos</h1>
         <a href="{{ route('medicos.create') }}"
-            class= "bg-gradient-to-t from-[#60ECEC] to-[#A6FFAF] hover:bg-gradient-to-t hover:from-[#59d3d3] hover:to-[#9cf1a5] font-medium px-5 py-2.5 me-2 mb-2 focus:outline-none">Añadir
+            class= "bg-gradient-to-t from-[#60ECEC] to-[#A6FFAF] hover:bg-gradient-to-t hover:from-[#59d3d3] hover:to-[#9cf1a5] font-medium px-2 py-2.5 sm:px-5 me-2 mb-2 focus:outline-none text-center">Añadir
             medico</a>
     </div>
 

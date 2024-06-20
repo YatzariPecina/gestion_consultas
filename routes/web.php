@@ -17,6 +17,10 @@ Route::get('/dashboard', function () {
 Route::get('register', [RegisteredUserController::class, 'create'])->middleware(['auth', 'verified'])->name('register');
 Route::post('register', [RegisteredUserController::class, 'store'])->middleware(['auth', 'verified']);
 
+Route::get('/agenda', function(){
+    return view('agenda.agenda');
+})->middleware(['auth', 'verified'])->name('agenda');
+
 Route::resource('usuarios', UsuarioController::class)->middleware(['auth', 'verified']);
 Route::resource('medicos', MedicoController::class)->middleware(['auth', 'verified']);
 
