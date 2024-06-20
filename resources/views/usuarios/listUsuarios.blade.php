@@ -13,6 +13,9 @@
                             Nombre
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Correo electronico
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Rol
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -26,6 +29,9 @@
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $usuario->name }}
                             </th>
+                            <td class="px-6 py-4">
+                                {{ $usuario->email }}
+                            </td>
                             <td class="px-6 py-4">
                                 {{ $usuario->rol }}
                             </td>
