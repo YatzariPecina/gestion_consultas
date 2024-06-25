@@ -35,7 +35,7 @@
                 <input type="text" id="tipo_medico" name="tipo_medico" class=""
                     placeholder="Ingrese el tipo de medico">
             </div>
-            <div class="flex justify-center items-centermt-4 mt-3">
+            <div class="flex justify-center items-center mt-3">
                 <button type="submit" class="text-black bg-gradient-to-t from-[#60ECEC] to-[#A6FFAF] hover:bg-gradient-to-t hover:from-[#59d3d3] hover:to-[#9cf1a5] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">Aceptar</button>
                 <a href="{{ route('medicos.index') }}" class="text-black bg-gradient-to-t from-[#60ECEC] to-[#A6FFAF] hover:bg-gradient-to-t hover:from-[#59d3d3] hover:to-[#9cf1a5] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">Cancelar</a>
             </div>

@@ -20,6 +20,12 @@
                     </x-nav-link>
                 </div>
 
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                    <x-nav-link :href="route('pacientes.index')" :active="request()->routeIs('usuarios')">
+                        {{ __('Pacientes') }}
+                    </x-nav-link>
+                </div>
+
                 @switch(Auth::user()->rol)
                     @case('Administrador')
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
@@ -129,7 +135,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
-        @if (Auth::user()->rol)
+        @if (Auth::user()->rol == 'Administrador')
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios')">
                     {{ __('Usuarios') }}
@@ -139,6 +145,11 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('medicos.index')" :active="request()->routeIs('medicos')">
                 {{ __('Medicos') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('pacientes.index')" :active="request()->routeIs('medicos')">
+                {{ __('Pacientes') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
