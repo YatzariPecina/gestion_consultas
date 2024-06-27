@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Cita;
+use App\Models\Paciente;
 use Illuminate\Http\Request;
 
-class UsuarioController extends Controller
+class CitaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('usuarios.listUsuarios', [
-            'usuarios' => User::latest()->get()
-        ]);
+        //
     }
 
     /**
@@ -22,7 +21,9 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        return view('citas.register', [
+            'pacientes' => Paciente::latest()->get(),
+        ]);
     }
 
     /**
@@ -30,13 +31,19 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            Cita::create($request->validate([
+                
+            ]));
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show(Cita $cita)
     {
         //
     }
@@ -44,7 +51,7 @@ class UsuarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(Cita $cita)
     {
         //
     }
@@ -52,7 +59,7 @@ class UsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Cita $cita)
     {
         //
     }
@@ -60,7 +67,7 @@ class UsuarioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(Cita $cita)
     {
         //
     }

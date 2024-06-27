@@ -68,13 +68,13 @@
                             </td>
                             <td class="px-6 py-4 flex flex-wrap">
                                 <a href="{{ route('medicos.show', $medico->id) }}"
-                                    class="font-medium text-blue-600 hover:underline pr-2">Ver</a>
+                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Ver</a>
                                 <a href="{{ route('medicos.edit', $medico->id) }}"
-                                    class="font-medium text-blue-600 hover:underline pr-2">Editar</a>
+                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Editar</a>
                                 <form action="{{ route('medicos.destroy', $medico->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="font-medium text-blue-600 hover:underline">Eliminar</button>
+                                    <button class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg">Eliminar</button>
                                 </form>
                             </td>
                         </tr>

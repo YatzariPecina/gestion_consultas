@@ -14,9 +14,16 @@ return new class extends Migration
         Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->integer('edad');
+            $table->date('fecha_nacimiento');
             $table->string('sexo');
-            $table->string('telefono');
+            $table->string('telefono_paciente');
+            $table->string('correo');
+            $table->string('direccion')->nullable();
+            $table->string('nacionalidad')->nullable();
+            $table->string('nombre del contacto de emergencia');
+            $table->string('telefono_contacto de emergencia');
+            $table->string('RFC')->nullable();
+            $table->string('observaciones')->nullable();
 
             $table->unsignedBigInteger('id_medico')->nullable();
             $table->foreign('id_medico')->references('id')->on('medicos');

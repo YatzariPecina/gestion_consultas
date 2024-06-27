@@ -6,12 +6,12 @@
     </div>
 
     <div class="mt-6 bg-white p-6 mx-6 mb-6 rounded-2xl drop-shadow-md sm:flex sm:justify-center">
-        <div class="">
-            <div class="col-">
+        <div class="w-full flex">
+            <div class="w-1/2">
                 <!-- Unos pedillos-->
                 Aqui se hacen unas cosillas
             </div>
-            <div id="calendar" class="col-10"></div>
+            <div id="calendar" class="w-1/2"></div>
         </div>
     </div>
 
@@ -25,9 +25,9 @@
                 initialView: 'dayGridMonth',
                 events: [{
                     title: 'Cita Estática',
-                    start: '2024-06-24T18:00:00',
+                    start: '2024-06-24T17:00:00',
                     allDay: false,
-                    textColor: 'red'
+                    textColor: 'black'
                 }, ]
             });
 

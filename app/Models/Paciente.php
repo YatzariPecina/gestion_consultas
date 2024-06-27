@@ -16,4 +16,9 @@ class Paciente extends Model
         'telefono',
         'id_medico'
     ];
+
+    public function medico()
+    {
+        return $this->belongsTo(Medico::class, 'id_medico');
+    }
 }

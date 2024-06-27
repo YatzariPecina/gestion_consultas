@@ -21,58 +21,63 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                    <x-nav-link :href="route('pacientes.index')" :active="request()->routeIs('usuarios')">
+                    <x-nav-link :href="route('pacientes.index')" :active="request()->routeIs('pacientes')">
                         {{ __('Pacientes') }}
                     </x-nav-link>
                 </div>
 
-                @switch(Auth::user()->rol)
-                    @case('Administrador')
-                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                            <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios')">
-                                {{ __('Usuarios') }}
-                            </x-nav-link>
-                        </div>
-                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                            <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
-                                {{ __('Medicos') }}
-                            </x-nav-link>
-                        </div>
-                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                            <x-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
-                                {{ __('Agenda') }}
-                            </x-nav-link>
-                        </div>
-                    @break
+                @auth
+                    @switch(Auth::user()->rol)
+                        @case('Administrador')
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                                <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios')">
+                                    {{ __('Usuarios') }}
+                                </x-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                                <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
+                                    {{ __('Medicos') }}
+                                </x-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                                <x-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
+                                    {{ __('Agenda') }}
+                                </x-nav-link>
+                            </div>
+                        @break
 
-                    @case('Doctor')
-                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                            <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
-                                {{ __('Medicos') }}
-                            </x-nav-link>
-                        </div>
-                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                            <x-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
-                                {{ __('Agenda') }}
-                            </x-nav-link>
-                        </div>
-                    @break
+                        @case('Doctor')
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                                <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
+                                    {{ __('Medicos') }}
+                                </x-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                                <x-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
+                                    {{ __('Agenda') }}
+                                </x-nav-link>
+                            </div>
+                        @break
 
-                    @case('Recepcionista')
-                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                            <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
-                                {{ __('Medicos') }}
-                            </x-nav-link>
-                        </div>
-                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                            <x-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
-                                {{ __('Agenda') }}
-                            </x-nav-link>
-                        </div>
-                    @break
+                        @case('Recepcionista')
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                                <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
+                                    {{ __('Medicos') }}
+                                </x-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                                <x-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
+                                    {{ __('Agenda') }}
+                                </x-nav-link>
+                            </div>
+                        @break
 
-                    @default
-                @endswitch
+                        @default
+                    @endswitch
+
+                    @else
+                @endauth
+
 
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
                     <x-dropdown align="right" width="48">

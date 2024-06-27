@@ -36,9 +36,9 @@
                                 {{ $usuario->rol }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="#" class="font-medium text-blue-600 hover:underline pr-2">Ver</a>
-                                <a href="#" class="font-medium text-blue-600 hover:underline pr-2">Editar</a>
-                                <a href="#" class="font-medium text-blue-600 hover:underline">Eliminar</a>
+                                <a href="#" class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Ver</a>
+                                <a href="#" class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Editar</a>
+                                <a href="#" class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg">Eliminar</a>
 
                             </td>
                         </tr>
@@ -46,6 +46,5 @@
                 </tbody>
             </table>
         </div>
-
     </div>
 </x-app-layout>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMedicoRequest;
 use App\Http\Requests\UpdateMedicoRequest;
 use App\Models\Medico;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class MedicoController extends Controller
@@ -88,6 +89,15 @@ class MedicoController extends Controller
             return redirect()->route('medicos.index')->withSuccess('Medico eliminado');
         } catch (\Exception $th) {
             return back()->withErrors(['error' => 'Hubo un problema al eliminar al medico. Por favor, inténtalo de nuevo.']);
+        } catch (QueryException $e) {
+            // Comprobar si el error es debido a una restricción de llave foránea
+            if (strpos($e->getMessage(), 'foreign key constraint fails') !== false) {
+                // Mostrar un mensaje personalizado para el caso de restricción de llave foránea
+                return back()->withErrors(['error' => 'No se puede eliminar al médico porque tiene pacientes asociados.']);
+            } else {
+                // Para otros errores, mostrar el mensaje genérico
+                return back()->withErrors(['error' => 'Hubo un problema al eliminar al médico. Por favor, inténtalo de nuevo.']);
+            }
         }
     }
 }

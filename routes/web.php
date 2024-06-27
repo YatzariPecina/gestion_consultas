@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CitaController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\ProfileController;
@@ -20,11 +21,12 @@ Route::post('register', [RegisteredUserController::class, 'store'])->middleware(
 
 Route::get('/agenda', function(){
     return view('agenda.agenda');
-})->middleware(['auth', 'verified'])->name('agenda');
+})->name('agenda');
 
 Route::resource('usuarios', UsuarioController::class)->middleware(['auth', 'verified']);
 Route::resource('medicos', MedicoController::class)->middleware(['auth', 'verified']);
-Route::resource('pacientes', PacienteController::class);
+Route::resource('pacientes', PacienteController::class)->middleware(['auth', 'verified']);
+Route::resource('citas', CitaController::class)->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

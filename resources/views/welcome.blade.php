@@ -24,6 +24,10 @@
             </div>
             @if (Route::has('login'))
                 <nav class="-mx-3 flex flex-1 justify-end mr-3">
+                    <a href="{{ route('agenda') }}"
+                        class="rounded-md text-center px-3 py-2 text-black ring-1 ring-transparent transition hover:bg-gray-300 hover:text-black/70 focus:outline-none">
+                        Agenda
+                    </a>
                     @auth
                         <a href="{{ url('/dashboard') }}"
                             class="rounded-md text-center px-3 py-2 text-black ring-1 ring-transparent transition hover:bg-gray-300 hover:text-black/70 focus:outline-none">
@@ -51,8 +55,7 @@
             <div class="w-full max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
                 <span class="text-sm text-gray-800 sm:text-center">© 2023 Hesiptial. All Rights Reserved.
                 </span>
-                <ul
-                    class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-800 sm:mt-0">
+                <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-800 sm:mt-0">
                     <li>
                         <a href="#" class="hover:underline me-4 md:me-6">About</a>
                     </li>
