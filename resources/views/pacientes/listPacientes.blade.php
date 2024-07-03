@@ -58,11 +58,15 @@
                                 <a href="{{ route('pacientes.edit', $paciente->id) }}"
                                     class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Editar</a>
                                 <a href="{{ route('citas.create') }}"
-                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Agregar cita</a>
+                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Agregar
+                                    cita</a>
                                 <form action="{{ route('pacientes.destroy', $paciente->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg">Eliminar</button>
+                                    <button
+                                        class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg"><i
+                                            class="fas fa-trash"></i>
+                                    </button>
                                 </form>
                             </td>
                         </tr>

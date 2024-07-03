@@ -11,6 +11,7 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link href='https://unpkg.com/fullcalendar@5.10.0/main.min.css' rel='stylesheet' />
+        <script src="https://kit.fontawesome.com/43e9630cc4.js" crossorigin="anonymous"></script>
 
         <link rel="shortcut icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
 

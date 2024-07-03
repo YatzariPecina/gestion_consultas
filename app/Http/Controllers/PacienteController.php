@@ -37,14 +37,20 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        try {
             //Validar datos
             $request->validate([
-                'nombre' => 'required|string|max:50',
-                'edad' => 'required|integer|min:1|max:10000',
-                'sexo' => 'required|string|max:1',
-                'telefono' => 'required|string|max:250',
-                'id_medico' => 'required|string|max:20'
+                'nombre' => 'required|string|max:255',
+                'fecha_nacimiento' => 'required|date',
+                'sexo' => 'required|string|max:10',
+                'telefono_paciente' => 'required|string|max:20',
+                'correo' => 'required|string|email|max:255',
+                'direccion' => 'nullable|string|max:255',
+                'nacionalidad' => 'nullable|string|max:50',
+                'nombre_contacto_emergencia' => 'required|string|max:255',
+                'telefono_contacto_emergencia' => 'required|string|max:20',
+                'RFC' => 'nullable|string|max:13',
+                'observaciones' => 'nullable|string',
+                'id_medico' => 'required|string'
             ]);
 
             //Crear el paciente
@@ -52,9 +58,6 @@ class PacienteController extends Controller
 
             //Una vez creado redirigir al index con el mensaje de paciente agregado
             return redirect()->route('pacientes.index')->withSuccess('Nuevo paciente agregado');
-        } catch (\Exception $th) {
-            return back()->withErrors(['error' => $th]);
-        }
     }
 
     /**

@@ -22,9 +22,10 @@
                         placeholder="Ingrese el nombre">
                 </div>
                 <div class="form-group flex flex-col mt-3">
-                    <label for="edad" class="block mb-2 text-sm font-medium text-gray-900">Edad:</label>
-                    <input type="number" id="edad" name="edad" class="form-control"
-                        placeholder="Ingrese la edad">
+                    <label for="fecha_nacimiento" class="block mb-2 text-sm font-medium text-gray-900">Fecha de
+                        nacimiento:</label>
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control"
+                        placeholder="Ingrese la fecha de nacimiento">
                 </div>
                 <div class="form-group flex flex-col mt-3">
                     <label for="sexo" class="block mb-2 text-sm font-medium text-gray-900">Sexo:</label>
@@ -35,9 +36,43 @@
                     </select>
                 </div>
                 <div class="form-group flex flex-col mt-3">
-                    <label for="telefono" class="block mb-2 text-sm font-medium text-gray-900">Telefono:</label>
-                    <input type="text" id="telefono" name="telefono" class="form-control"
-                        placeholder="Ingrese el telefono">
+                    <label for="telefono_paciente" class="block mb-2 text-sm font-medium text-gray-900">Telefono del
+                        paciente:</label>
+                    <input type="tel" id="telefono_paciente" name="telefono_paciente" class="form-control"
+                        placeholder="Ingrese el telefono del paciente">
+                </div>
+                <div class="form-group flex flex-col mt-3">
+                    <label for="direccion" class="block mb-2 text-sm font-medium text-gray-900">Direccion:</label>
+                    <input type="text" id="direccion" name="direccion" class="form-control"
+                        placeholder="Ingrese la direccion del paciente">
+                </div>
+                <div class="form-group flex flex-col mt-3">
+                    <label for="nacionalidad" class="block mb-2 text-sm font-medium text-gray-900">Nacionalidad:</label>
+                    <input type="text" id="nacionalidad" name="nacionalidad" class="form-control"
+                        placeholder="Ingrese la nacionalidad del paciente">
+                </div>
+                <div class="form-group flex flex-col mt-3">
+                    <label for="correo" class="block mb-2 text-sm font-medium text-gray-900">Correo
+                        electronico:</label>
+                    <input type="email" id="correo" name="correo" class="form-control"
+                        placeholder="Ingrese el correo electronico">
+                </div>
+                <div class="form-group flex flex-col mt-3">
+                    <label for="nombre_contacto_emergencia" class="block mb-2 text-sm font-medium text-gray-900">Nombre
+                        del contacto de emergencia:</label>
+                    <input type="text" id="nombre_contacto_emergencia" name="nombre_contacto_emergencia"
+                        class="form-control">
+                </div>
+                <div class="form-group flex flex-col mt-3">
+                    <label for="telefono_contacto_emergencia"
+                        class="block mb-2 text-sm font-medium text-gray-900">Telefono del contacto de
+                        emergencia:</label>
+                    <input type="tel" id="telefono_contacto_emergencia" name="telefono_contacto_emergencia"
+                        class="form-control">
+                </div>
+                <div class="form-group flex flex-col mt-3">
+                    <label for="rfc" class="block mb-2 text-sm font-medium text-gray-900">Ingresa tu RFC:</label>
+                    <input type="text" id="rfc" name="RFC" maxlength="18" class="form-control">
                 </div>
                 <div class="form-group flex flex-col mt-3">
                     <label for="id_medico" class="block mb-2 text-sm font-medium text-gray-900">Elige el medico
@@ -49,6 +84,11 @@
                             <option value="{{ $medico->id }}"> {{ $medico->nombre }} </option>
                         @endforeach
                     </select>
+                </div>
+                <div class="form-group flex flex-col mt-3">
+                    <label for="observaciones" class="block mb-2 text-sm font-medium text-gray-900">Observaciones:</label>
+                    <textarea id="observaciones" name="observaciones" rows="4"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Escribe tus observaciones"></textarea>
                 </div>
                 <div class="flex justify-center items-center mt-3">
                     <button type="submit"

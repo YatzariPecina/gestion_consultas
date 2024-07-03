@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('correo');
             $table->string('direccion')->nullable();
             $table->string('nacionalidad')->nullable();
-            $table->string('nombre del contacto de emergencia');
-            $table->string('telefono_contacto de emergencia');
+            $table->string('nombre_contacto_emergencia');
+            $table->string('telefono_contacto_emergencia');
             $table->string('RFC')->nullable();
             $table->string('observaciones')->nullable();
 
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->foreign('id_medico')->references('id')->on('medicos');
 
             $table->timestamps();
-        });   
+        });
     }
 
     /**
