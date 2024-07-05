@@ -39,6 +39,9 @@
                             Nombre del paciente
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Medico a cargo
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Acciones
                         </th>
                     </tr>
@@ -52,19 +55,24 @@
                             <td class="px-6 py-4">
                                 {{ $paciente->nombre }}
                             </td>
+                            <td class="px-6 py-4">
+                                {{ $paciente->medico->nombre }}
+                            </td>
                             <td class="px-6 py-4 flex">
                                 <a href="{{ route('pacientes.show', $paciente->id) }}"
-                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Ver</a>
+                                    class="font-semibold text-lg hover:bg-green-100 text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                        class="fa-regular fa-eye"></i></a>
                                 <a href="{{ route('pacientes.edit', $paciente->id) }}"
-                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Editar</a>
+                                    class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                        class="fa-regular fa-pen-to-square"></i></a>
                                 <a href="{{ route('citas.create') }}"
-                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Agregar
-                                    cita</a>
+                                    class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                        class="fa-regular fa-calendar-plus"></i></a>
                                 <form action="{{ route('pacientes.destroy', $paciente->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button
-                                        class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg"><i
+                                        class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg"><i
                                             class="fas fa-trash"></i>
                                     </button>
                                 </form>
