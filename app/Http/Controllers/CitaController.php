@@ -33,14 +33,14 @@ class CitaController extends Controller
     {
         try {
             Cita::create($request->validate([
-                'id_paciente' => 'required|string',
-                'asunto' => 'required|string',
-                'fecha' => 'required|string',
-                'hora' => 'required|string'
+                'id_paciente' => 'required|integer|min:1',
+                'descripcion' => 'nullable|string|max:255',
+                'fecha_cita' => 'required|date',
+                'hora_cita' => 'required|date_format:H:i',
             ]));
-            return redirect()->route('citas.index')->withSuccess('Cita creada correctamente');
+            return redirect()->route('pacientes.index')->withSuccess('Cita creada correctamente');
         } catch (\Throwable $th) {
-            return back()->withErrors(['error' => 'Hubo un problema al crear la cita. Por favor intentelo de nuevo']);
+            return back()->withErrors(['error' => $th]);
         }
     }
 

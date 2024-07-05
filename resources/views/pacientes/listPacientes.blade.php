@@ -65,7 +65,7 @@
                                 <a href="{{ route('pacientes.edit', $paciente->id) }}"
                                     class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                         class="fa-regular fa-pen-to-square"></i></a>
-                                <a href="{{ route('citas.create') }}"
+                                <a href="{{ route('citas.create', $paciente->id) }}"
                                     class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                         class="fa-regular fa-calendar-plus"></i></a>
                                 <form action="{{ route('pacientes.destroy', $paciente->id) }}" method="post">

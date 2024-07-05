@@ -13,6 +13,6 @@ class Cita extends Model
         'id_paciente',
         'fecha_cita',
         'hora_cita',
-        'asunto'
+        'descripcion'
     ];
 }

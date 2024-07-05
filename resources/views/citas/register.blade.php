@@ -28,18 +28,18 @@
                     </select>
                 </div>
                 <div class="form-group flex flex-col">
-                    <label for="asunto" class="block mb-2 text-sm font-medium text-gray-900">Asunto o
+                    <label for="descripcion" class="block mb-2 text-sm font-medium text-gray-900">Asunto o
                         descripción:</label>
-                    <input type="text" id="asunto" name="asunto" class="form-control"
+                    <input type="text" id="descripcion" name="descripcion" class="form-control"
                         placeholder="Ingrese el nombre">
                 </div>
                 <div class="form-group flex flex-col">
-                    <label for="fecha" class="block mb-2 text-sm font-medium text-gray-900">Fecha:</label>
-                    <input type="date" id="fecha" name="fecha" class="form-control">
+                    <label for="fecha_cita" class="block mb-2 text-sm font-medium text-gray-900">Fecha:</label>
+                    <input type="date" id="fecha_cita" name="fecha_cita" class="form-control">
                 </div>
                 <div class="form-group flex flex-col">
-                    <label for="hora" class="block mb-2 text-sm font-medium text-gray-900">Hora:</label>
-                    <input type="time" id="hora" name="hora" class="form-control">
+                    <label for="hora_cita" class="block mb-2 text-sm font-medium text-gray-900">Hora:</label>
+                    <input type="time" id="hora_cita" name="hora_cita" class="form-control">
                 </div>
                 <div class="flex justify-center items-center mt-3">
                     <button type="submit"
