@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMedicoRequest;
 use App\Http\Requests\UpdateMedicoRequest;
 use App\Models\Medico;
+use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class MedicoController extends Controller
 {
@@ -34,12 +37,21 @@ class MedicoController extends Controller
     public function store(StoreMedicoRequest $request)
     {
         try {
-            //Crear un nuevo medico validando el request
-            Medico::create($request->validated());
+            // Primero, obtenemos los datos validados del request
+            $validatedData = $request->validated();
+
+            // Luego, agregamos el campo 'rol' con el valor 'Medico' a los datos validados
+            $validatedData['rol'] = 'Medico';
+
+            // Creamos el usuario con los datos validados y el campo 'rol' incluido
+            $user = User::create($validatedData);
+
+            Medico::create($validatedData);
+
             //Redireccionar al index con success
             return redirect()->route('medicos.index')->withSuccess('Medico agregado con exito');
         } catch (\Exception $th) {
-            return back()->withErrors(['error' => 'Hubo un problema al insertar los datos. Por favor, inténtalo de nuevo.']);
+            return back()->withErrors(['error' => $th]);
         }
     }
 

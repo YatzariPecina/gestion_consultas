@@ -7,5 +7,7 @@ namespace Illuminate\Foundation\Http\Middleware;
  */
 class ValidateCsrfToken extends VerifyCsrfToken
 {
-    //
+    protected $except = [
+        'receive-data', // Agrega esta línea
+    ];
 }

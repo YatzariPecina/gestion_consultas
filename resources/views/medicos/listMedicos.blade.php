@@ -52,10 +52,10 @@
                     @foreach ($medicos as $medico)
                         <tr class="bg-white">
                             <th scope="row" class="px-6 py-4">
-                                {{ $medico->nombre }}
+                                {{ $medico->name }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $medico->correo }}
+                                {{ $medico->email }}
                             </td>
                             <th scope="row" class="px-6 py-4">
                                 {{ $medico->telefono }}
@@ -68,13 +68,16 @@
                             </td>
                             <td class="px-6 py-4 flex flex-wrap">
                                 <a href="{{ route('medicos.show', $medico->id) }}"
-                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Ver</a>
+                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                    class="fa-regular fa-eye"></i></a>
                                 <a href="{{ route('medicos.edit', $medico->id) }}"
-                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Editar</a>
+                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                    class="fa-regular fa-pen-to-square"></i></a>
                                 <form action="{{ route('medicos.destroy', $medico->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg">Eliminar</button>
+                                    <button class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg"><i
+                                        class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

@@ -19,6 +19,13 @@ class CitaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function createCita(Paciente $paciente)
+    {
+        return view('citas.register', [
+            'paciente' => compact('paciente'),
+        ]);
+    }
+
     public function create()
     {
         return view('citas.register', [

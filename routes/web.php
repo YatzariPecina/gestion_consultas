@@ -35,6 +35,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::post('/receive-data', [DataController::class, 'receiveData'])->name('dataset');
+Route::match(['get', 'post'], '/receive-data', [DataController::class, 'receiveData'])->name('dataset');
+
+Route::get('/download-file', function () {
+    $file = storage_path('data.txt');
+    return response()->download($file);
+});
+
 
 require __DIR__ . '/auth.php';

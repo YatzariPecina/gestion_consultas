@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
 class StoreMedicoRequest extends FormRequest
 {
@@ -22,11 +24,20 @@ class StoreMedicoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => 'required|string|max:50',
-            'correo' => 'required|string|min:1|max:10000',
+            'name' => 'required|string|max:50',
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['required', 'confirmed', Password::defaults()],
             'telefono' => 'required|string|max:15',
             'profesion' => 'required|string|max:250',
             'tipo_medico' => 'required|string|max:250'
         ];
+    }
+
+    public function prepareForValidation()
+    {
+        // Asignar el valor de 'rol' a 'Medico'
+        $this->merge(['rol' => 'Medico']);
+
+        parent::prepareForValidation();
     }
 }

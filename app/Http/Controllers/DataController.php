@@ -20,12 +20,12 @@ class DataController extends Controller
             if (json_last_error() === JSON_ERROR_NONE) {
                 // Procesar la matriz (ejemplo: guardar en un archivo o en una base de datos)
                 file_put_contents(storage_path('data.txt'), print_r($data, true));
-                return response()->json(['message' => 'Datos recibidos exitosamente']);
+                return view('ML.recibe-data', ['message' => 'Datos recibidos exitosamente']);
             } else {
-                return response()->json(['message' => 'Error al decodificar JSON'], 400);
+                return view('ML.recibe-data', ['message' => 'Error al decodificar JSON']);
             }
         } else {
-            return response()->json(['message' => 'Método no permitido'], 405);
+            return view('ML.recibe-data', ['message' => 'Es para descargar']);
         }
     }
 }

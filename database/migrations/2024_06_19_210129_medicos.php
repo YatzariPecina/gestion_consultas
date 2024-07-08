@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('medicos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre');
-            $table->string('correo');
+            $table->string('name');
+            $table->string('email');
             $table->string('telefono');
             $table->string('profesion');
             $table->string('tipo_medico');

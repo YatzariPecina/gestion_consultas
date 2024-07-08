@@ -27,7 +27,7 @@
                 <option value="">Escoge un rol</option>
                 <option value="Administrador">Administrador</option>
                 <option value="Recepcionista">Recepcionista</option>
-                <option value="Doctor">Doctor</option>
+                <option value="Medico">Medico</option>
             </select>
         </div>
 
