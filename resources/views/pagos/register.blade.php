@@ -46,7 +46,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         <option value="">--</option>
                         @foreach ($medicos as $medico)
-                            <option value="{{ $medico->id }}"> {{ $medico->nombre }} </option>
+                            <option value="{{ $medico->id }}"> {{ $medico->name }} </option>
                         @endforeach
                     </select>
                 </div>

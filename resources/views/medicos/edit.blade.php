@@ -9,16 +9,16 @@
             @method('PUT')
             <div class="form-group flex flex-col">
                 <!-- campo para agregar el nombre del medico -->
-                <label for="nombre" class="">Nombre:</label>
-                <input type="text" value="{{ $medico->nombre }}" id="nombre" name="nombre"
+                <label for="name" class="">Nombre:</label>
+                <input type="text" value="{{ $medico->name }}" id="name" name="name"
                     placeholder="Ingrese el nombre">
             </div>
             <div class="form-group flex flex-col mt-3">
                 <!-- campo para agregar el correo del medico -->
-                <label for="correo" class="">Correo
+                <label for="email" class="">Correo
                     electronico:</label>
-                <input type="email" id="correo" name="correo" placeholder="Ingrese su correo electronico"
-                    value="{{ $medico->correo }}">
+                <input type="email" id="email" name="email" placeholder="Ingrese su correo electronico"
+                    value="{{ $medico->email }}">
             </div>
             <div class="form-group flex flex-col mt-3">
                 <!-- campo para agregar el telefono del medico -->

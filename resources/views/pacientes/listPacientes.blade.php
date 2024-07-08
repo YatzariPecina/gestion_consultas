@@ -56,7 +56,7 @@
                                 {{ $paciente->nombre }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $paciente->medico->nombre }}
+                                {{ $paciente->medico->name }}
                             </td>
                             <td class="px-6 py-4 flex">
                                 <a href="{{ route('pacientes.show', $paciente->id) }}"

@@ -9,11 +9,11 @@
         <div class="container w-full sm:w-1/2 mt-6 bg-white p-6 mx-6 mb-6 rounded-2xl drop-shadow-md ">
             <div class="group mb-4">
                 <p class="font-medium">Nombre:</p>
-                <p>{{$medico->nombre}}</p>
+                <p>{{$medico->name}}</p>
             </div>
             <div class="group mb-4">
                 <p class="font-medium">Correo electronico:</p>
-                <p>{{$medico->correo}}</p>
+                <p>{{$medico->email}}</p>
             </div>
             <div class="group mb-4">
                 <p class="font-medium">Telefono:</p>
