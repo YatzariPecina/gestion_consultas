@@ -1,14 +1,7 @@
 <x-app-layout>
     <div
         class="mt-6 bg-white p-6 mx-6 mb-6 rounded-2xl drop-shadow-md flex flex-col items-center sm:justify-between sm:flex-row">
-        <h1 class="text-4xl font-extrabold mb-2 text-center sm:mb-0">Pacientes</h1>
-        @if ($numMedicos > 0)
-            <a href="{{ route('pacientes.create') }}"
-                class= "bg-gradient-to-t from-[#60ECEC] to-[#A6FFAF] hover:bg-gradient-to-t hover:from-[#59d3d3] hover:to-[#9cf1a5] font-medium px-2 py-2.5 sm:px-5 me-2 mb-2 focus:outline-none text-center">Añadir
-                paciente</a>
-        @else
-            <p class="font-semibold">No se puede registrar pacientes porque no hay medicos</p>
-        @endif
+        <h1 class="text-4xl font-extrabold mb-2 text-center sm:mb-0">Servicios</h1>
     </div>
 
     <div class="mt-6 bg-white p-6 mx-6 mb-6 rounded-2xl drop-shadow-md">
@@ -28,15 +21,23 @@
                 </ul>
             </div>
         @endif
+        <div class="flex">
+            <a href="{{ route('servicios.create') }}"
+                class= "bg-gradient-to-t from-[#60ECEC] to-[#A6FFAF] hover:bg-gradient-to-t hover:from-[#59d3d3] hover:to-[#9cf1a5] font-medium px-2 py-2.5 sm:px-5 me-2 mb-2 focus:outline-none text-center">Nuevo
+                servicio</a>
+            <a href="{{ route('servicios.tipoServicio') }}"
+                class= "bg-gradient-to-t from-[#60ECEC] to-[#A6FFAF] hover:bg-gradient-to-t hover:from-[#59d3d3] hover:to-[#9cf1a5] font-medium px-2 py-2.5 sm:px-5 me-2 mb-2 focus:outline-none text-center">Nuevo
+                tipo de servicio</a>
+        </div>
         <div class="relative overflow-x-auto">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                 <thead class="text-xs text-gray-900 uppercase bg-gray-300">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Numero de paciente
+                            Nombre
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Nombre del paciente
+                            Precio
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Acciones
@@ -44,29 +45,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($pacientes as $paciente)
+                    @forelse ($servicios as $servicio)
                         <tr class="bg-white">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                {{ $paciente->id }}
+                            <th scope="row" class="px-6 py-4">
+                                {{ $servicio->nombre }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $paciente->nombre }}
+                                {{ $servicio->precio }}
                             </td>
-                            <td class="px-6 py-4 flex">
-                                <a href="{{ route('pacientes.show', $paciente->id) }}"
-                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Ver</a>
-                                <a href="{{ route('pacientes.edit', $paciente->id) }}"
-                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Editar</a>
-                                <a href="{{ route('citas.create') }}"
-                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Agregar cita</a>
-                                <form action="{{ route('pacientes.destroy', $paciente->id) }}" method="post">
+                            <td class="px-6 py-4 flex flex-wrap">
+                                <a href="{{ route('medicos.show', $servicio->id) }}"
+                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                        class="fa-regular fa-eye"></i></a>
+                                <a href="{{ route('medicos.edit', $servicio->id) }}"
+                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                        class="fa-regular fa-pen-to-square"></i></a>
+                                <form action="{{ route('medicos.destroy', $servicio->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg">Eliminar</button>
+                                    <button
+                                        class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg"><i
+                                            class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <td colspan="6">
+                            <span class="text-danger">
+                                <strong>No hay servicios</strong>
+                            </span>
+                        </td>
+                    @endforelse
                 </tbody>
             </table>
         </div>

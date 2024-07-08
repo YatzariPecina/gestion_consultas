@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Medico;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -42,6 +43,14 @@ class RegisteredUserController extends Controller
             'rol' => $request->rol,
             'password' => Hash::make($request->password),
         ]);
+
+        if ($request->rol === 'Medico') {
+            Medico::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'user_id' => $user->id,
+            ]);
+        }
 
         return redirect()->route('usuarios.index')->withSuccess('Usuario agregado con exito');
     }

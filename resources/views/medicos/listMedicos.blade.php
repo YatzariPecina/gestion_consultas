@@ -85,6 +85,5 @@
                 </tbody>
             </table>
         </div>
-        {{ $medicos->links() }}
     </div>
 </x-app-layout>

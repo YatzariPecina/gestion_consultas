@@ -15,9 +15,9 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email');
-            $table->string('telefono');
-            $table->string('profesion');
-            $table->string('tipo_medico');
+            $table->string('telefono')->nullable();
+            $table->string('profesion')->nullable();
+            $table->string('tipo_medico')->nullable();
             $table->timestamps();
         });
     }

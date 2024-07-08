@@ -19,7 +19,7 @@ class MedicoController extends Controller
     public function index()
     {
         return view('medicos.listMedicos', [
-            'medicos' => Medico::latest()->paginate(4)
+            'medicos' => Medico::latest()->get()
         ]);
     }
 

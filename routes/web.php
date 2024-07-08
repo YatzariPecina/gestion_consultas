@@ -6,6 +6,7 @@ use App\Http\Controllers\DataController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,9 @@ Route::resource('usuarios', UsuarioController::class)->middleware(['auth', 'veri
 Route::resource('medicos', MedicoController::class)->middleware(['auth', 'verified']);
 Route::resource('pacientes', PacienteController::class)->middleware(['auth', 'verified']);
 Route::resource('citas', CitaController::class)->middleware(['auth', 'verified']);
+Route::resource('servicios', ServicioController::class)->middleware(['auth', 'verified']);
+Route::get('/servicios/tipo-servicio', [ServicioController::class, 'tipoServicio'])->name('servicios.tipoServicio');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

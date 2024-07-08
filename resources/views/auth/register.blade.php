@@ -28,6 +28,7 @@
                 <option value="Administrador">Administrador</option>
                 <option value="Recepcionista">Recepcionista</option>
                 <option value="Medico">Medico</option>
+                <option value="Enfermera">Enfermera</option>
             </select>
         </div>
 
