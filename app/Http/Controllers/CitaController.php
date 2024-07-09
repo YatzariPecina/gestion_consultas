@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Cita;
 use App\Models\Paciente;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class CitaController extends Controller
 {
@@ -39,16 +41,44 @@ class CitaController extends Controller
     public function store(Request $request)
     {
         try {
-            Cita::create($request->validate([
+            $validatedData = $request->validate([
                 'id_paciente' => 'required|integer|min:1',
                 'descripcion' => 'nullable|string|max:255',
-                'fecha_cita' => 'required|date',
+                'fecha_cita' => [
+                    'required',
+                    'date',
+                    'after_or_equal:' . Carbon::today()->format('Y-m-d')
+                ],
                 'hora_cita' => 'required|date_format:H:i',
-            ]));
-            return redirect()->route('pacientes.index')->withSuccess('Cita creada correctamente');
+            ]);
+
+            Cita::create($validatedData);
+            return redirect()->route('agenda')->withSuccess('Cita creada correctamente');
         } catch (\Throwable $th) {
-            return back()->withErrors(['error' => $th]);
+            // En lugar de simplemente devolver el error, puedes manejar específicamente el caso de fechas inválidas
+            if ($th instanceof ValidationException) {
+                return back()->withErrors(['error' => 'La cita no puede ser para un día anterior a hoy.']);
+            } else {
+                return back()->withErrors(['error' => 'Hubo un error al generar la cita ']);
+            }
         }
+    }
+
+    public function showAgenda()
+    {
+
+        $citas = Cita::all();
+        $events = [];
+
+        foreach ($citas as $cita) {
+            $events[] = [
+                "title" => $cita->descripcion,
+                "start" => $cita->fecha_cita . " " . $cita->hora_cita,
+                "end" => $cita->fecha_cita
+            ];
+        }
+
+        return view('agenda.agenda', compact('events'));
     }
 
     /**

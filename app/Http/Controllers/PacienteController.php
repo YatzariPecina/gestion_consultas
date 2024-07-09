@@ -86,12 +86,19 @@ class PacienteController extends Controller
     {
         try {
             //Con un request modificar el paciente con los datos validados con el request
-            $paciente->update($request->validated([
-                'nombre' => 'required|string|max:50',
-                'edad' => 'required|integer|min:1|max:10000',
-                'sexo' => 'required|string|max:1',
-                'telefono' => 'required|string|max:250',
-                'id_medico' => 'required|string|max:250'
+            $paciente->update($request->validate([
+                'nombre' => 'required|string|max:255',
+                'fecha_nacimiento' => 'required|date',
+                'sexo' => 'required|string|max:10',
+                'telefono_paciente' => 'required|string|max:20',
+                'correo' => 'required|string|email|max:255',
+                'direccion' => 'nullable|string|max:255',
+                'nacionalidad' => 'nullable|string|max:50',
+                'nombre_contacto_emergencia' => 'required|string|max:255',
+                'telefono_contacto_emergencia' => 'required|string|max:20',
+                'RFC' => 'nullable|string|max:13',
+                'observaciones' => 'nullable|string',
+                'id_medico' => 'required|string'
             ]));
             //Redirigir a el index para visualizar el paciente
             return redirect()->route('pacientes.index')->withSuccess('Paciente actualizado');

@@ -21,17 +21,13 @@ Route::get('/dashboard', function () {
 Route::get('register', [RegisteredUserController::class, 'create'])->middleware(['auth', 'verified'])->name('register');
 Route::post('register', [RegisteredUserController::class, 'store'])->middleware(['auth', 'verified']);
 
-Route::get('/agenda', function(){
-    return view('agenda.agenda');
-})->name('agenda');
-
 Route::resource('usuarios', UsuarioController::class)->middleware(['auth', 'verified']);
 Route::resource('medicos', MedicoController::class)->middleware(['auth', 'verified']);
 Route::resource('pacientes', PacienteController::class)->middleware(['auth', 'verified']);
 Route::resource('citas', CitaController::class)->middleware(['auth', 'verified']);
 Route::resource('servicios', ServicioController::class)->middleware(['auth', 'verified']);
 Route::get('/servicios/tipo-servicio', [ServicioController::class, 'tipoServicio'])->name('servicios.tipoServicio');
-
+Route::get('/agenda', [CitaController::class, 'showAgenda'])->name('agenda');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,7 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::match(['get', 'post'], '/receive-data', [DataController::class, 'receiveData'])->name('dataset');
+Route::match(['get', 'post'], '/recibir-data', [DataController::class, 'receiveData'])->name('dataset');
 
 Route::get('/download-file', function () {
     $file = storage_path('data.txt');
