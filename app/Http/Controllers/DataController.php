@@ -17,12 +17,27 @@ class DataController extends Controller
             $data = json_decode($json_data, true);
 
             // Verificar si la decodificación fue exitosa
+            // Verificar si la decodificación fue exitosa
             if (json_last_error() === JSON_ERROR_NONE) {
-                // Procesar la matriz (ejemplo: guardar en un archivo o en una base de datos)
-                file_put_contents(storage_path('data.txt'), print_r($data, true));
-                return view('ML.recibe-data', ['message' => 'Datos recibidos exitosamente']);
+                $ruta = storage_path('datasets/');
+                $archivo = $ruta . "dataset.csv";
+
+                // Verifica si el directorio existe, si no, crea el directorio
+                if (!file_exists($ruta)) {
+                    mkdir($ruta, 0755, true);
+                }
+
+                // Abre el archivo en modo apilamiento
+                $manejadorArchivo = fopen($archivo, 'a');
+
+                // Manda al archivo la nueva información
+                fputcsv($manejadorArchivo, $data['dataset']);
+
+                fclose($manejadorArchivo); // Cierra el archivo después de escribir
+
+                return response()->json(['message' => 'Datos recibidos exitosamente']);
             } else {
-                return view('ML.recibe-data', ['message' => 'Error al decodificar JSON']);
+                return response()->json(['error' => 'Error al decodificar JSON'], 400);
             }
         } else {
             return view('ML.recibe-data', ['message' => 'Es para descargar']);

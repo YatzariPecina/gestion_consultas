@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::match(['get', 'post'], '/recibir-data', [DataController::class, 'receiveData'])->name('dataset');
+Route::match(['get', 'post'], '/receive-data', [DataController::class, 'receiveData'])->name('dataset');
 
 Route::get('/download-file', function () {
     $file = storage_path('data.txt');
