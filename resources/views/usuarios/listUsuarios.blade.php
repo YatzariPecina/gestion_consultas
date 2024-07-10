@@ -63,7 +63,7 @@
                                 <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" onclick="return confirm('Do you want to delete this product?');"
+                                    <button type="submit" onclick="return confirm('Do you want to delete this user?');"
                                         class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                             class="fas fa-trash"></i>
                                     </button>

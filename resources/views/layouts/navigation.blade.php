@@ -51,7 +51,7 @@
                             </div>
                         @break
 
-                        @case('Doctor')
+                        @case('Medico')
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
                                 <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
                                     {{ __('Medicos') }}

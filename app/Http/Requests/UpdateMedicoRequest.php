@@ -22,8 +22,8 @@ class UpdateMedicoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => 'required|string|max:50',
-            'correo' => 'required|string|min:1|max:10000',
+            'name' => 'required|string|max:50',
+            'email' => 'required|string|min:1|max:10000',
             'telefono' => 'required|string|max:15',
             'profesion' => 'required|string|max:250',
             'tipo_medico' => 'required|string|max:250'

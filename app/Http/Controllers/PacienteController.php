@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cita;
 use App\Models\Medico;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
@@ -65,7 +66,11 @@ class PacienteController extends Controller
      */
     public function show(Paciente $paciente)
     {
-        return view('pacientes.show', compact('paciente'));
+        $id = $paciente->id;
+        return view('pacientes.show', [
+            'paciente' => $paciente,
+            'citas' => Paciente::find($id)->citas
+        ]);
     }
 
     /**
