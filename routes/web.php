@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
 Route::match(['get', 'post'], '/receive-data', [DataController::class, 'receiveData'])->name('dataset');
 
 Route::get('/download-file', function () {
-    $file = storage_path('data.txt');
+    $file = storage_path('datasets/dataset.csv');
     return response()->download($file);
 });
 
