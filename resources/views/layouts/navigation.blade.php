@@ -39,16 +39,6 @@
                                     {{ __('Medicos') }}
                                 </x-nav-link>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                                <x-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
-                                    {{ __('Agenda') }}
-                                </x-nav-link>
-                            </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                                <x-nav-link :href="route('servicios.index')" :active="request()->routeIs('servicios')">
-                                    {{ __('Servicios') }}
-                                </x-nav-link>
-                            </div>
                         @break
 
                         @case('Medico')
@@ -62,11 +52,6 @@
                                     {{ __('Agenda') }}
                                 </x-nav-link>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                                <x-nav-link :href="route('servicios.index')" :active="request()->routeIs('servicios')">
-                                    {{ __('Servicios') }}
-                                </x-nav-link>
-                            </div>
                         @break
 
                         @case('Recepcionista')
@@ -78,11 +63,6 @@
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
                                 <x-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
                                     {{ __('Agenda') }}
-                                </x-nav-link>
-                            </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                                <x-nav-link :href="route('servicios.index')" :active="request()->routeIs('servicios')">
-                                    {{ __('Servicios') }}
                                 </x-nav-link>
                             </div>
                         @break
