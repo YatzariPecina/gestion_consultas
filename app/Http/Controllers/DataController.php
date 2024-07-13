@@ -8,6 +8,7 @@ class DataController extends Controller
 {
     public function receiveData(Request $request)
     {
+        $ruta = storage_path('datasets/');
         // Verificar si la solicitud es POST
         if ($request->isMethod('post')) {
             // Obtener los datos JSON enviados
@@ -19,7 +20,7 @@ class DataController extends Controller
             // Verificar si la decodificación fue exitosa
             // Verificar si la decodificación fue exitosa
             if (json_last_error() === JSON_ERROR_NONE) {
-                $ruta = storage_path('datasets/');
+
                 $archivo = $ruta . "dataset.csv";
 
                 // Verifica si el directorio existe, si no, crea el directorio
@@ -42,5 +43,20 @@ class DataController extends Controller
         } else {
             return view('ML.recibe-data', ['message' => 'Es para descargar']);
         }
+    }
+
+    public function actualizarData(Request $request)
+    {
+        $ruta = storage_path('datasets/');
+
+        $archivo = $ruta . 'dataset.csv';
+
+        if (file_exists($archivo)) {
+            unlink($archivo);
+        }
+
+        $file = $request->file('file');
+        $file->move($ruta, 'dataset.csv');
+        return view('ML.recibe-data', ['message' => 'Es para descargar']);
     }
 }

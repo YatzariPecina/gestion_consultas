@@ -8,6 +8,16 @@
 <body>
     <h1>Response</h1>
     <p>{{ $message }}</p>
+
+    <div class="container">
+        <form action="{{ route('actualizar.dataset') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <label for="file">Ingresa si tienes una actualizacion</label>
+            <input type="file" name="file" id="file">
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
     <a href="/download-file">Descargar el archivo</a>
 </body>
 </html>
