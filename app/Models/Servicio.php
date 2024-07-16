@@ -17,6 +17,6 @@ class Servicio extends Model
 
     public function tipoServicio()
     {
-        return $this->belongsTo(Tipo_servicio::class, 'id_tipo_servicio');
+        return $this->belongsTo(TipoServicio::class, 'id_tipo_servicio');
     }
 }

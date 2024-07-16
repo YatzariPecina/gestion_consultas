@@ -26,7 +26,9 @@ Route::resource('medicos', MedicoController::class)->middleware(['auth', 'verifi
 Route::resource('pacientes', PacienteController::class)->middleware(['auth', 'verified']);
 Route::resource('citas', CitaController::class)->middleware(['auth', 'verified']);
 Route::resource('servicios', ServicioController::class)->middleware(['auth', 'verified']);
-Route::get('/servicios/tipo-servicio', [ServicioController::class, 'tipoServicio'])->name('servicios.tipoServicio');
+
+Route::post('/servicios/tipo-servicio/store', [ServicioController::class, 'storeTipoServicio'])->name('servicios.storeTipoServicio');
+
 Route::get('/agenda', [CitaController::class, 'showAgenda'])->name('agenda');
 
 Route::middleware('auth')->group(function () {

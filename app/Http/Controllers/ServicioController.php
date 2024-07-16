@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Servicio;
+use App\Models\Tipo_servicio;
+use App\Models\TipoServicio;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -13,7 +15,7 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        return view('pagos.listServicios',[
+        return view('pagos.listServicios', [
             'servicios' => Servicio::latest()->get(),
         ]);
     }
@@ -23,12 +25,21 @@ class ServicioController extends Controller
      */
     public function create()
     {
-        //
+        return view('pagos.register', [
+            'tipos_servicio' => TipoServicio::all()
+        ]);
     }
 
-    public function tipoServicio() : View
+    public function storeTipoServicio(Request $request)
     {
-        return view('pagos.tipo-servicio');
+        $validated = $request->validate([
+            'tipo' => 'required|max:255',
+        ]);
+    
+        TipoServicio::create($validated);
+    
+        // Redirigir al usuario a la página de éxito o lista de tipos de servicios
+        return redirect()->route('servicios.index')->with('success', 'Tipo de servicio creado exitosamente.');
     }
 
     /**
@@ -36,7 +47,16 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            Servicio::create($request->validate([
+                'nombre' => 'required',
+                'precio' => 'required',
+                'id_tipo_servicio' => 'required',
+            ]));
+            return redirect()->route('servicios.index')->withSuccess('Servicio creado');
+        } catch (\Exception $th) {
+            return back()->withErrors(['error' => 'Hubo un problema al modificar los datos. Por favor, inténtalo de nuevo.']);
+        }
     }
 
     /**
