@@ -5,9 +5,11 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\UsuarioController;
+use App\Models\Producto;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,6 +28,7 @@ Route::resource('medicos', MedicoController::class)->middleware(['auth', 'verifi
 Route::resource('pacientes', PacienteController::class)->middleware(['auth', 'verified']);
 Route::resource('citas', CitaController::class)->middleware(['auth', 'verified']);
 Route::resource('servicios', ServicioController::class)->middleware(['auth', 'verified']);
+Route::resource('productos', ProductoController::class)->middleware(['auth', 'verified']);
 
 Route::post('/servicios/tipo-servicio/store', [ServicioController::class, 'storeTipoServicio'])->name('servicios.storeTipoServicio');
 

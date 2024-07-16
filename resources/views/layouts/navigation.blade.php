@@ -25,6 +25,11 @@
                         {{ __('Pacientes') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                    <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos')">
+                        {{ __('Productos') }}
+                    </x-nav-link>
+                </div>
 
                 @auth
                     @switch(Auth::user()->rol)
@@ -69,8 +74,7 @@
 
                         @default
                     @endswitch
-
-                    @else
+                @else
                 @endauth
 
 

@@ -8,6 +8,13 @@
 <body>
     <h1>Response</h1>
     <p>{{ $message }}</p>
+    <div class="my-4">
+        @session('success')
+            <div class="alert alert-success" role="alert">
+                {{ $value }}
+            </div>
+        @endsession
+    </div>
 
     <div class="container">
         <form action="{{ route('actualizar.dataset') }}" method="post" enctype="multipart/form-data">

@@ -57,6 +57,6 @@ class DataController extends Controller
 
         $file = $request->file('file');
         $file->move($ruta, 'dataset.csv');
-        return view('ML.recibe-data', ['message' => 'Es para descargar']);
+        return redirect()->route('dataset')->withSuccess('Archivo actualizado');
     }
 }
