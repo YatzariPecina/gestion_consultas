@@ -1,0 +1,16 @@
+.fc-daygrid-day-number{
+    font-size: 20px;
+}
+
+/* Estilos para los números de los días */
+.fc-daygrid-day-top {
+    font-size: 1.5em; /* Ajusta el tamaño del texto según tus necesidades */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para días con eventos */
+.day-with-event {
+    background-color: black; /* Color de fondo azul claro para celdas con eventos */
+}

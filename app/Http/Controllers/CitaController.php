@@ -78,7 +78,10 @@ class CitaController extends Controller
             ];
         }
 
-        return view('agenda.agenda', compact('events'));
+        return view('agenda.agenda', [
+            'events' => $events,
+            'citas' => $citas
+        ]);
     }
 
     /**

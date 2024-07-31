@@ -10,10 +10,13 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\UsuarioController;
 use App\Models\Producto;
+use App\Models\Servicio;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'servicios' => Servicio::all()
+    ]);
 });
 
 Route::get('/dashboard', function () {

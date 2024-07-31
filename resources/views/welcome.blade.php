@@ -48,6 +48,21 @@
                 <img src="{{ asset('img/logo.png') }}">
             </div>
             <div class="bg-white p-6 mx-6 mb-6 rounded-2xl drop-shadow-md">
+                <h2>SERVICIOS QUE OFRECEMOS:</h2>
+                @forelse ($servicios as $servicio)
+                    <div href="#"
+                        class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                            {{ $servicio->nombre }}
+                        </h5>
+                        <p class="font-normal text-gray-700">
+                            {{ $servicio->precio }}
+                        </p>
+                    </div>
+                @empty
+                    <p>No hay servicios</p>
+                @endforelse
             </div>
         </main>
 
