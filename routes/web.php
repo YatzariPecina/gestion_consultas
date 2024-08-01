@@ -35,7 +35,7 @@ Route::resource('productos', ProductoController::class)->middleware(['auth', 've
 
 Route::post('/servicios/tipo-servicio/store', [ServicioController::class, 'storeTipoServicio'])->name('servicios.storeTipoServicio');
 
-Route::get('/agenda', [CitaController::class, 'showAgenda'])->name('agenda');
+Route::get('agenda', [CitaController::class, 'showAgenda'])->name('agenda');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
