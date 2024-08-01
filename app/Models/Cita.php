@@ -13,7 +13,8 @@ class Cita extends Model
         'id_paciente',
         'fecha_cita',
         'hora_cita',
-        'descripcion'
+        'descripcion',
+        'id_consulta'
     ];
 
     public function paciente()
