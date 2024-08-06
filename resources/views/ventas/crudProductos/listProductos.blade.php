@@ -11,7 +11,7 @@
         <div class="my-4">
             @session('success')
                 <div class="alert alert-success" role="alert">
-                    {{ $value }}
+                    {{ $mensaje }}
                 </div>
             @endsession
         </div>
@@ -64,7 +64,7 @@
                                 ${{ $producto->costo }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $roducto->cantidad }}
+                                {{ $producto->cantidad }}
                             </td>
                             <td class="px-6 py-4 flex">
                                 <a href="{{ route('productos.edit', $producto->id) }}"
@@ -73,8 +73,8 @@
                                 <form action="{{ route('pacientes.destroy', $producto->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button
-                                        class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg"><i
+                                    <button type="submit" onclick="return confirm('¿Quieres eliminar este producto?');"
+                                        class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                             class="fas fa-trash"></i>
                                     </button>
                                 </form>
@@ -83,7 +83,7 @@
                     @empty
                         <td colspan="6">
                             <span class="text-danger">
-                                <strong>No hay servicios</strong>
+                                <strong>No hay productos</strong>
                             </span>
                         </td>
                     @endforelse

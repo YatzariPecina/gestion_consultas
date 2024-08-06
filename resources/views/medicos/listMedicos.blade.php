@@ -76,8 +76,10 @@
                                 <form action="{{ route('medicos.destroy', $medico->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg"><i
-                                        class="fas fa-trash"></i></button>
+                                    <button type="submit" onclick="return confirm('¿Quieres eliminar este medico?');"
+                                        class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                            class="fas fa-trash"></i>
+                                    </button>
                                 </form>
                             </td>
                         </tr>

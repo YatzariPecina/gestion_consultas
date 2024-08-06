@@ -22,7 +22,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        return view('ventas.crudProductos.register');
     }
 
     /**
@@ -30,7 +30,14 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Producto::create($request->validate([
+            'nombre' => 'required|string',
+            'marca' => 'required|string',
+            'costo' => 'required|string',
+            'cantidad' => 'required'
+        ]));
+        
+        return redirect()->route('productos.index')->withSuccess(['mensaje' => 'Se ha agregado un producot']);
     }
 
     /**

@@ -31,7 +31,7 @@
                     <label for="descripcion" class="block mb-2 text-sm font-medium text-gray-900">Asunto o
                         descripción:</label>
                     <input type="text" id="descripcion" name="descripcion" class="form-control"
-                        placeholder="Ingrese el nombre">
+                        placeholder="Ingrese luna descripcion (opcional)">
                 </div>
                 <div class="form-group flex flex-col">
                     <label for="fecha_cita" class="block mb-2 text-sm font-medium text-gray-900">Fecha:</label>

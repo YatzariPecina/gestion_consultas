@@ -16,7 +16,7 @@
 
         <link rel="shortcut icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
 
-        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/calendar.css'])
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
