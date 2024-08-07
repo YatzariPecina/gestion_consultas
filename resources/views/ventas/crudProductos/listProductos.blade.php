@@ -66,15 +66,15 @@
                             <td class="px-6 py-4">
                                 {{ $producto->cantidad }}
                             </td>
-                            <td class="px-6 py-4 flex">
+                            <td class="px-6 py-4 flex flex-wrap">
                                 <a href="{{ route('productos.edit', $producto->id) }}"
-                                    class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
-                                        class="fas fa-pen-to-square"></i></a>
-                                <form action="{{ route('pacientes.destroy', $producto->id) }}" method="post">
+                                    class="font-medium text-blue-600 hover:bg-gray-200 py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                    class="fa-regular fa-pen-to-square"></i></a>
+                                <form action="{{ route('productos.destroy', $producto->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return confirm('¿Quieres eliminar este producto?');"
-                                        class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                    <button type="submit" onclick="return confirm('¿Quieres eliminar este medico?');"
+                                        class="font-medium text-blue-600 hover:bg-gray-200 py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                             class="fas fa-trash"></i>
                                     </button>
                                 </form>
