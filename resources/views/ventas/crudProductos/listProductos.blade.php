@@ -9,11 +9,11 @@
 
     <div class="mt-6 bg-white p-6 mx-6 mb-6 rounded-2xl drop-shadow-md">
         <div class="my-4">
-            @session('success')
+            @if (session('success'))
                 <div class="alert alert-success" role="alert">
-                    {{ $mensaje }}
+                    {{ session('success') }}
                 </div>
-            @endsession
+            @endif
         </div>
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -69,7 +69,7 @@
                             <td class="px-6 py-4 flex">
                                 <a href="{{ route('productos.edit', $producto->id) }}"
                                     class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
-                                        class="fa-regular fa-pen-to-square"></i></a>
+                                        class="fas fa-pen-to-square"></i></a>
                                 <form action="{{ route('pacientes.destroy', $producto->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')

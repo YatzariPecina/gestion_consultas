@@ -37,7 +37,7 @@ class ProductoController extends Controller
             'cantidad' => 'required'
         ]));
         
-        return redirect()->route('productos.index')->withSuccess(['mensaje' => 'Se ha agregado un producot']);
+        return redirect()->route('productos.index')->with('success', 'Se ha agregado un producto');
     }
 
     /**
