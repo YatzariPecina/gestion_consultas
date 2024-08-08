@@ -53,7 +53,7 @@
                     <label for="" class="block mb-2 mr-2 text-lg font-medium text-gray-900">Medico a
                         cargo:</label>
                     <div class="col-md-6 text-lg">
-                        {{ $paciente->medico->nombre }}
+                        {{ $paciente->medico->name }}
                     </div>
                 </div>
                 <div class="flex">

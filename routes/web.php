@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
@@ -32,6 +33,7 @@ Route::resource('pacientes', PacienteController::class)->middleware(['auth', 've
 Route::resource('citas', CitaController::class)->middleware(['auth', 'verified']);
 Route::resource('servicios', ServicioController::class)->middleware(['auth', 'verified']);
 Route::resource('productos', ProductoController::class)->middleware(['auth', 'verified']);
+Route::resource('consultas', ConsultaController::class)->middleware(['auth', 'verified']);
 
 Route::post('/servicios/tipo-servicio/store', [ServicioController::class, 'storeTipoServicio'])->name('servicios.storeTipoServicio');
 
