@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Cita;
 use App\Models\Consulta;
+use App\Models\Estudio;
 use App\Models\Paciente;
+use App\Models\Producto;
+use App\Models\Servicio;
 use Illuminate\Http\Request;
 
 class ConsultaController extends Controller
@@ -30,7 +33,10 @@ class ConsultaController extends Controller
 
         return view('consultas.register', [
             'cita' => $cita,
-            'paciente' => $paciente
+            'paciente' => $paciente,
+            'servicios' => Servicio::all(),
+            'productos' => Producto::all(),
+            'estudios' => Estudio::all()
         ]);
     }
 

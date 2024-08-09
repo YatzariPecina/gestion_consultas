@@ -89,8 +89,6 @@
         </div>
     </div>
 
-    <!-- Botón para abrir el modal -->
-
     <!-- Modal Structure -->
     <div id="myModal" class="modal hidden fixed w-full h-full top-0 left-0 items-center justify-center z-50">
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-80"></div>
