@@ -24,20 +24,23 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('register', [RegisteredUserController::class, 'create'])->middleware(['auth', 'verified'])->name('register');
-Route::post('register', [RegisteredUserController::class, 'store'])->middleware(['auth', 'verified']);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+    Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::resource('usuarios', UsuarioController::class);
+    Route::resource('medicos', MedicoController::class);
+    Route::resource('pacientes', PacienteController::class);
+    Route::resource('citas', CitaController::class);
+    Route::resource('servicios', ServicioController::class);
+    Route::resource('productos', ProductoController::class);
+    Route::post('/servicios/tipo-servicio/store', [ServicioController::class, 'storeTipoServicio'])->name('servicios.storeTipoServicio');
+    Route::get('agenda', [CitaController::class, 'showAgenda'])->name('agenda');
+});
 
-Route::resource('usuarios', UsuarioController::class)->middleware(['auth', 'verified']);
-Route::resource('medicos', MedicoController::class)->middleware(['auth', 'verified']);
-Route::resource('pacientes', PacienteController::class)->middleware(['auth', 'verified']);
-Route::resource('citas', CitaController::class)->middleware(['auth', 'verified']);
-Route::resource('servicios', ServicioController::class)->middleware(['auth', 'verified']);
-Route::resource('productos', ProductoController::class)->middleware(['auth', 'verified']);
-Route::resource('consultas', ConsultaController::class)->middleware(['auth', 'verified']);
-
-Route::post('/servicios/tipo-servicio/store', [ServicioController::class, 'storeTipoServicio'])->name('servicios.storeTipoServicio');
-
-Route::get('agenda', [CitaController::class, 'showAgenda'])->name('agenda');
+Route::get('/consultas/create/{cita}', [ConsultaController::class, 'create'])->name('consultas.create')->middleware(['auth', 'verified']);
+Route::resource('consultas', ConsultaController::class)->middleware(['auth', 'verified'])->except([
+    'create'
+]);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

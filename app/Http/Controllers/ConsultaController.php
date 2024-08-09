@@ -22,10 +22,10 @@ class ConsultaController extends Controller
      */
     public function create(Cita $cita)
     {
-        $paciente = Paciente::find($cita->id_paciente);
+        $paciente = Paciente::findOrFail($cita->id_paciente);
 
         if (!$paciente) {
-            abort(404, 'Paciente no encontrado');
+            abort(403, 'Paciente no encontrado');
         }
 
         return view('consultas.register', [
@@ -37,7 +37,7 @@ class ConsultaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Cita $cita)
+    public function store(Request $request)
     {
         //
     }

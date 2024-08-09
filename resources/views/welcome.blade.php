@@ -24,10 +24,6 @@
             </div>
             @if (Route::has('login'))
                 <nav class="-mx-3 flex flex-1 justify-end mr-3">
-                    <a href="{{ route('agenda') }}"
-                        class="rounded-md text-center px-3 py-2 text-black ring-1 ring-transparent transition hover:bg-gray-300 hover:text-black/70 focus:outline-none">
-                        Agenda
-                    </a>
                     @auth
                         <a href="{{ url('/dashboard') }}"
                             class="rounded-md text-center px-3 py-2 text-black ring-1 ring-transparent transition hover:bg-gray-300 hover:text-black/70 focus:outline-none">

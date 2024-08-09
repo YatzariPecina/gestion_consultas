@@ -15,7 +15,7 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        return view('pagos.listServicios', [
+        return view('ventas.crudServicios.listServicios', [
             'servicios' => Servicio::latest()->get(),
         ]);
     }
@@ -25,7 +25,7 @@ class ServicioController extends Controller
      */
     public function create()
     {
-        return view('pagos.register', [
+        return view('ventas.crudServicios.register', [
             'tipos_servicio' => TipoServicio::all()
         ]);
     }
