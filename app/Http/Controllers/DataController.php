@@ -78,7 +78,7 @@ class DataController extends Controller
                 echo $line . "\n";
             }
                 */
-            return response()->json(['message' => $output]);
+            return response()->json(['message' => $return_var]);
         }
     }
 }
