@@ -54,6 +54,8 @@ Route::middleware('auth')->group(function () {
 
 Route::match(['get', 'post'], '/receive-data', [DataController::class, 'receiveData'])->name('dataset');
 Route::post('/actualizar-dataset', [DataController::class, 'actualizarData'])->name('actualizar.dataset');
+Route::post('/send-data', [DataController::class, 'predecir']);
+
 
 Route::get('/download-file', function () {
     $file = storage_path('datasets/dataset.csv');

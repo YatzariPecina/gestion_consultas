@@ -59,4 +59,33 @@ class DataController extends Controller
         $file->move($ruta, 'dataset.csv');
         return redirect()->route('dataset')->withSuccess('Archivo actualizado');
     }
+
+    public function predecir(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            // Obtener los datos JSON enviados
+            $json_data = $request->getContent();
+
+            // Decodificar los datos JSON
+            $data = json_decode($json_data, true);
+
+            // Verificar si la decodificación fue exitosa
+            if (json_last_error() === JSON_ERROR_NONE) {
+
+                $dataSerialized = serialize($data['dataset']);
+
+                $socket = stream_socket_client('tcp://localhost:5000');
+                fwrite($socket, $dataSerialized);
+
+                // No se necesita recibir una respuesta de vuelta
+                fclose($socket);
+
+                return response()->json(['message' => 'Datos recibidos exitosamente']);
+            } else {
+                return response()->json(['error' => 'Error al decodificar JSON'], 400);
+            }
+        }
+
+        return response()->json(['message' => 'Datos enviados y procesados']);
+    }
 }
