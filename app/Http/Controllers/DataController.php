@@ -74,7 +74,7 @@ class DataController extends Controller
 
                 $dataSerialized = serialize($data['dataset']);
 
-                $socket = stream_socket_client('tcp://localhost:5000');
+                $socket = stream_socket_client('http://localhost:5000');
                 fwrite($socket, $dataSerialized);
 
                 // No se necesita recibir una respuesta de vuelta
