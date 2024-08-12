@@ -66,26 +66,19 @@ class DataController extends Controller
             // Obtener los datos JSON enviados
             $json_data = $request->getContent();
 
-            // Decodificar los datos JSON
-            $data = json_decode($json_data, true);
+            $escaped_json_data = escapeshellarg($json_data);
+            // Ruta al script Python (asegúrate de usar la ruta correcta)
+            $comando = "python3 storage\scripts\ScriptPrediction.py {$escaped_json_data}";
 
-            // Verificar si la decodificación fue exitosa
-            if (json_last_error() === JSON_ERROR_NONE) {
+            // Ejecuta el comando y captura la salida
+            exec($comando, $output, $return_var);
 
-                $dataSerialized = serialize($data['dataset']);
-
-                $socket = stream_socket_client('tcp://127.0.0.1:5000');
-                fwrite($socket, $dataSerialized);
-
-                // No se necesita recibir una respuesta de vuelta
-                fclose($socket);
-
-                return response()->json(['message' => 'Datos recibidos exitosamente']);
-            } else {
-                return response()->json(['error' => 'Error al decodificar JSON'], 400);
+            // Muestra la salida y el código de retorno
+            /*foreach ($output as $line) {
+                echo $line . "\n";
             }
+                */
+            return response()->json(['message' => $output]);
         }
-
-        return response()->json(['message' => 'Datos enviados y procesados']);
     }
 }
