@@ -3,7 +3,7 @@ import joblib
 import json
 
 # Cargar el modelo pkl
-with open("D:\\Sistemas inteligentes\\Proyecto 1\\magic_wand_model\\notebook\magic_wand.pkl", 'rb') as file:
+with open("storage\scripts\magic_wand.pkl", 'rb') as file:
     modelo = joblib.load(file)
     
     # Leer los datos de los argumentos de línea de comandos
