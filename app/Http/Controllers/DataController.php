@@ -73,12 +73,12 @@ class DataController extends Controller
             // Ejecuta el comando y captura la salida
             exec($comando, $output, $return_var);
 
-            // Muestra la salida y el código de retorno
-            /*foreach ($output as $line) {
-                echo $line . "\n";
-            }
-                */
-            return response()->json(['message' => $return_var]);
+            $output_string = implode("\n", $output);
+
+            return response()->json([
+                'output' => $output_string,
+                'return_var' => $return_var
+            ]);
         }
     }
 }
