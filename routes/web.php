@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\EstudioController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\ProductoController;
@@ -35,6 +36,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('productos', ProductoController::class);
     Route::post('/servicios/tipo-servicio/store', [ServicioController::class, 'storeTipoServicio'])->name('servicios.storeTipoServicio');
     Route::get('agenda', [CitaController::class, 'showAgenda'])->name('agenda');
+
+    Route::get('/estudios', [EstudioController::class, 'index'])->name('estudios.index');
+    Route::post('/estudios/store', [EstudioController::class, 'store'])->name('estudios.store');
 });
 
 Route::get('/consultas/create/{cita}', [ConsultaController::class, 'create'])->name('consultas.create')->middleware(['auth', 'verified']);
@@ -58,3 +62,4 @@ Route::get('/download-file', function () {
 
 
 require __DIR__ . '/auth.php';
+

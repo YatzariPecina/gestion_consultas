@@ -30,6 +30,11 @@
                         {{ __('Productos') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
+                    <x-nav-link :href="route('estudios.index')" :active="request()->routeIs('Estudios')">
+                        {{ __('Estudios') }}
+                    </x-nav-link>
+                </div>
 
                 @auth
                     @switch(Auth::user()->rol)
