@@ -2,6 +2,7 @@ import sys
 import joblib
 import json
 from sklearn import preprocessing
+import numpy as np  # Importa numpy para manejar arrays
 import os
 
 def main():
@@ -23,7 +24,9 @@ def main():
             input_data_numerico = [int(d) for d in data_list]
 
             if isinstance(input_data_numerico, list) and len(input_data_numerico) > 0:
-                nuevos_datos_standar = scaler.transform(input_data_numerico)
+                # Reshape el array para cumplir con la expectativa de un solo feature
+                input_data_numerico_reshaped = np.array(input_data_numerico).reshape(-1, 1)
+                nuevos_datos_standar = scaler.transform(input_data_numerico_reshaped)
 
                 # Hacer la predicción
                 prediction = modelo.predict(nuevos_datos_standar)
