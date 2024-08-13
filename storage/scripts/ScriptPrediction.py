@@ -32,7 +32,7 @@ def main():
                 prediction = modelo.predict(nuevos_datos_standar)
                 
                 # Mostrar la predicción en la consola
-                print(f"Predicción para los datos: {prediction}")
+                print(f"Prediccion para los datos: {prediction}")
             else:
                 print(f"Datos no válidos para la transformación {input_data}")
                 sys.exit(1)  # Código de error
