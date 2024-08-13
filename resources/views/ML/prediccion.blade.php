@@ -17,16 +17,13 @@
         @endsession
     </div>
 
-    <h1>{{ $message }}</h1>
-    
-    <h2>Características Enviadas:</h2>
-    <pre>{{ $caracteristicas }}</pre>
-    
-    <h2>Salida del Script:</h2>
-    <pre>{{ $output }}</pre>
-    
-    <h2>Estado del Script:</h2>
-    <pre>{{ $return_var }}</pre>
+    @if(Session::has('processed_data'))
+        <ul>
+            @foreach(Session::get('output') as $key => $value)
+                <li>{{ $key }}: {{ $value }}</li>
+            @endforeach
+        </ul>
+    @endif
 </body>
 
 </html>

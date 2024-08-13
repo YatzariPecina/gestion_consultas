@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class DataController extends Controller
 {
@@ -74,15 +75,17 @@ class DataController extends Controller
             exec($comando, $output, $return_var);
 
             $output_string = implode("\n", $output);
+            $processedData = [$output_string];
 
-            // Redirigir a la vista con las variables
-            return response()->json([
-                'output' => $output_string,
-            ]);
+            // Almacena los datos procesados en la sesión
+            Session::put('processed_data', $processedData);
+
+            // Redirige a la vista Blade con los datos procesados
+            return redirect()->route('predecir');
         }
 
         // Redirigir a la vista con valores vacíos si no se envió una solicitud POST
-        return response()->json([
+        return view('ML.recibe-data', [
             'output' => ''
         ]);
     }
