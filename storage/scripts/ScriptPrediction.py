@@ -28,7 +28,7 @@ def main():
                 # Mostrar la predicción en la consola
                 print(f"Predicción para los datos: {prediction}")
             else:
-                print("Datos no válidos para la transformación.")
+                print("Datos no válidos para la transformación {input_data}")
                 sys.exit(1)  # Código de error
         else:
             print("No se recibieron datos.")
