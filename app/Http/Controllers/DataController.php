@@ -76,16 +76,19 @@ class DataController extends Controller
 
             $output_string = implode("\n", $output);
 
-            return redirect()->view('ML.prediccion', [
+            // Redirigir a la vista con las variables
+            return view('ML.prediccion', [
                 'caracteristicas' => $escaped_json_data,
                 'output' => $output_string,
                 'return_var' => $return_var,
                 'message' => 'Predicciones'
             ]);
         }
-        return redirect()->view('ML.prediccion', [
+
+        // Redirigir a la vista con valores vacíos si no se envió una solicitud POST
+        return view('ML.prediccion', [
             'caracteristicas' => "",
-            'output' => '',  // Dejar vacío en GET
+            'output' => '',
             'return_var' => '',
             'message' => 'Predicciones'
         ]);

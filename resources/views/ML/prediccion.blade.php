@@ -17,28 +17,16 @@
         @endsession
     </div>
 
-    <div class="container m-1">
-        <p>Caracteristicas</p>
-        {{ $caracteristicas }}
-    </div>
-
-    <div class="container m-1">
-        {{ $message }}
-    </div>
-
-    <div class="container m-1">
-        @isset($output)
-            <p>Salida</p>
-            {{ $output }}
-        @endisset
-    </div>
-
-    <div class="container m-1">
-        @isset($output)
-            <p>Variable de retorno</p>
-            {{ $return_var }}
-        @endisset
-    </div>
+    <h1>{{ $message }}</h1>
+    
+    <h2>Características Enviadas:</h2>
+    <pre>{{ $caracteristicas }}</pre>
+    
+    <h2>Salida del Script:</h2>
+    <pre>{{ $output }}</pre>
+    
+    <h2>Estado del Script:</h2>
+    <pre>{{ $return_var }}</pre>
 </body>
 
 </html>

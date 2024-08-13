@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
 
 Route::match(['get', 'post'], '/receive-data', [DataController::class, 'receiveData'])->name('dataset');
 Route::post('/actualizar-dataset', [DataController::class, 'actualizarData'])->name('actualizar.dataset');
-Route::match(['get', 'post'], '/send-data', [DataController::class, 'predecir']);
+Route::post('/send-data', [DataController::class, 'predecir']);
 
 
 Route::get('/download-file', function () {
