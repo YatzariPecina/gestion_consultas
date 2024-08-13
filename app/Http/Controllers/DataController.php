@@ -78,19 +78,15 @@ class DataController extends Controller
 
             // Redirigir a la vista con las variables
             return response()->json([
-                'caracteristicas' => $escaped_json_data,
                 'output' => $output_string,
-                'return_var' => $return_var,
-                'message' => 'Predicciones'
+                'return_var' => $return_var
             ]);
         }
 
         // Redirigir a la vista con valores vacíos si no se envió una solicitud POST
         return response()->json([
-            'caracteristicas' => '',
             'output' => '',
-            'return_var' => '',
-            'message' => 'Predicciones'
+            'return_var' => ''
         ]);
     }
 }
