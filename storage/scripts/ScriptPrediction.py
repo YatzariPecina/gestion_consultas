@@ -15,6 +15,7 @@ def main():
             modelo_scaler = joblib.load(file)
             modelo = modelo_scaler['modelo']
             scaler = modelo_scaler['scaler']
+            label_encoder = modelo_scaler['label_encoder']
 
         # Leer los datos de los argumentos de línea de comandos
         if len(sys.argv) > 1:
@@ -30,9 +31,11 @@ def main():
 
                 # Hacer la predicción
                 prediction = modelo.predict(nuevos_datos_standar)
+
+                class_name = label_encoder.inverse_transform(prediction)[0]
                 
                 # Mostrar la predicción en la consola
-                print(f"Prediccion para los datos: {prediction}")
+                print(class_name)
             else:
                 print(f"Datos no válidos para la transformación {input_data}")
                 sys.exit(1)  # Código de error
