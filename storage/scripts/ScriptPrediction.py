@@ -4,15 +4,16 @@ import json
 from sklearn import preprocessing
 
 # Cargar el modelo pkl
-with open("storage\scripts\magic_wand.pkl", 'rb') as file:
-    modelo = joblib.load(file)
+with open("magic_wand.pkl", 'rb') as file:
+    modelo_scaler = joblib.load(file)
+    modelo = modelo_scaler['modelo']
+    scaler = modelo_scaler['scaler']
     
     # Leer los datos de los argumentos de línea de comandos
 if len(sys.argv) > 1:
     input_data = json.loads(sys.argv[1])  # Decodifica el JSON recibido
 
-    standarizer = preprocessing.StandardScaler()
-    nuevos_datos_standar = standarizer.transform(input_data)
+    nuevos_datos_standar = scaler.transform(input_data)
 
     # Hacer la predicción
     prediction = modelo.predict([nuevos_datos_standar])

@@ -62,23 +62,31 @@ class DataController extends Controller
 
     public function predecir(Request $request)
     {
+        $ruta = storage_path('scripts/');
         if ($request->isMethod('post')) {
             // Obtener los datos JSON enviados
             $json_data = $request->getContent();
 
             $escaped_json_data = escapeshellarg($json_data);
             // Ruta al script Python (asegúrate de usar la ruta correcta)
-            $comando = "python3 storage\scripts\ScriptPrediction.py {$escaped_json_data}";
+            $comando = "python3 {$ruta}ScriptPrediction.py {$escaped_json_data}";
 
             // Ejecuta el comando y captura la salida
             exec($comando, $output, $return_var);
 
             $output_string = implode("\n", $output);
 
-            return response()->json([
+            return view('ML.prediccion', [
+                'caracteristicas' => $escaped_json_data,
                 'output' => $output_string,
-                'return_var' => $return_var
+                'return_var' => $return_var,
+                'message' => 'Predicciones'
             ]);
         }
+        return view('ML.prediccion', [
+            'output' => '',  // Dejar vacío en GET
+            'return_var' => '',
+            'message' => 'Predicciones'
+        ]);
     }
 }
