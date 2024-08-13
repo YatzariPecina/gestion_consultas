@@ -74,21 +74,39 @@ class DataController extends Controller
             $comando = "python3 {$ruta}ScriptPrediction.py {$escapedStoragePath} {$escapedJsonData}";
             exec($comando, $output, $return_var);
 
-            $output_string = implode("\n", $output);
+            $ruta = storage_path('datasets/');
+            // Abre el archivo en modo apilamiento
+            $manejadorArchivo = fopen($ruta . "predicciones.csv", 'w');
 
-            // Envía una respuesta inmediata con la salida para el archivo CPP
-            echo $output_string; // Esto enviará la salida directamente como respuesta
+            // Manda al archivo la nueva información
+            fputcsv($manejadorArchivo, $output);
 
-            // Redirige al usuario a una vista donde se muestra la salida de manera más legible
-            return redirect()->route('mostrarSalida', ['salida' => $output_string]);
+            fclose($manejadorArchivo); // Cierra el archivo después de escribir
+
         }
 
         // Redirigir a la vista con valores vacíos si no se envió una solicitud POST
-        return redirect()->route('mostrarSalida', ['salida' => '']);
+        return response()->json(['message' => 'Datos recibidos exitosamente']);
     }
 
-    public function mostrarSalida($salida)
+    public function mostrarSalida()
     {
-        return view('ML.prediccion', compact('salida'));
+        $data = $this->leerCsv(); // Leer los datos del CSV
+        return view('ML.prediccion', compact('data')); // Pasar los datos a la vista
+    }
+
+    private function leerCsv()
+    {
+        $filePath = storage_path('datasets/predicciones.csv');
+        $data = [];
+        if (file_exists($filePath)) {
+            if (($handle = fopen($filePath, "r")) !== FALSE) {
+                while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                    $data[] = $row;
+                }
+                fclose($handle);
+            }
+        }
+        return $data;
     }
 }

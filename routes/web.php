@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
 Route::match(['get', 'post'], '/receive-data', [DataController::class, 'receiveData'])->name('dataset');
 Route::post('/actualizar-dataset', [DataController::class, 'actualizarData'])->name('actualizar.dataset');
 Route::post('/send-data', [DataController::class, 'predecir'])->name('predecir');
-Route::get('/mostrar-salida/{salida}', [DataController::class, 'mostrarSalida'])->name('mostrarSalida');
+Route::get('/mostrar-salida', [DataController::class, 'mostrarSalida'])->name('mostrarSalida');
 
 
 Route::get('/download-file', function () {
