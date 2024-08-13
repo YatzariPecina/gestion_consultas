@@ -77,7 +77,7 @@ class DataController extends Controller
             $output_string = implode("\n", $output);
 
             // Redirigir a la vista con las variables
-            return view('ML.prediccion', [
+            return response()->json([
                 'caracteristicas' => $escaped_json_data,
                 'output' => $output_string,
                 'return_var' => $return_var,
@@ -86,8 +86,8 @@ class DataController extends Controller
         }
 
         // Redirigir a la vista con valores vacíos si no se envió una solicitud POST
-        return view('ML.prediccion', [
-            'caracteristicas' => "",
+        return response()->json([
+            'caracteristicas' => '',
             'output' => '',
             'return_var' => '',
             'message' => 'Predicciones'
