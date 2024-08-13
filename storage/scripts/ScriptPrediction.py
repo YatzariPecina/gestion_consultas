@@ -18,8 +18,9 @@ def main():
         # Leer los datos de los argumentos de línea de comandos
         if len(sys.argv) > 1:
             input_data = json.loads(sys.argv[2])  # Decodifica el JSON recibido
+            data_list = input_data.get('dataset', [])
             # Convertir las cadenas de texto que representan números a números enteros
-            input_data_numerico = [int(d) for d in input_data]
+            input_data_numerico = [int(d) for d in data_list]
 
             if isinstance(input_data_numerico, list) and len(input_data_numerico) > 0:
                 nuevos_datos_standar = scaler.transform(input_data_numerico)
