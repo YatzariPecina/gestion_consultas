@@ -25,7 +25,7 @@ def main():
 
             if isinstance(input_data_numerico, list) and len(input_data_numerico) > 0:
                 # Reshape el array para cumplir con la expectativa de un solo feature
-                input_data_numerico_reshaped = np.array(input_data_numerico).reshape(-1, 1)
+                input_data_numerico_reshaped = np.array(input_data_numerico).reshape(1, -1)
                 nuevos_datos_standar = scaler.transform(input_data_numerico_reshaped)
 
                 # Hacer la predicción
