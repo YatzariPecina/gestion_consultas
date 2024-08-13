@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>Response</h1>
+    <h1>Resultado de la predicción</h1>
     <div class="my-4">
         @session('success')
             <div class="alert alert-success" role="alert">
@@ -17,14 +17,7 @@
         @endsession
     </div>
 
-    <h2>Prediccion</h2>
-    @if(Session::has('processed_data'))
-        <ul>
-            @foreach(Session::get('processed_data') as $key => $value)
-                <li>{{ $key }}: {{ $value }}</li>
-            @endforeach
-        </ul>
-    @endif
+    <pre>{{ $salida }}</pre>
 </body>
 
 </html>

@@ -75,18 +75,20 @@ class DataController extends Controller
             exec($comando, $output, $return_var);
 
             $output_string = implode("\n", $output);
-            $processedData = [$output_string];
 
-            // Almacena los datos procesados en la sesión
-            Session::put('processed_data', $processedData);
+            // Envía una respuesta inmediata con la salida para el archivo CPP
+            echo $output_string; // Esto enviará la salida directamente como respuesta
 
-            // Redirige a la vista Blade con los datos procesados
-            return redirect()->route('predecir');
+            // Redirige al usuario a una vista donde se muestra la salida de manera más legible
+            return redirect()->route('mostrarSalida', ['salida' => $output_string]);
         }
 
         // Redirigir a la vista con valores vacíos si no se envió una solicitud POST
-        return view('ML.prediccion', [
-            'output' => ''
-        ]);
+        return redirect()->route('mostrarSalida', ['salida' => '']);
+    }
+
+    public function mostrarSalida($salida)
+    {
+        return view('ML.prediccion', compact('salida'));
     }
 }
