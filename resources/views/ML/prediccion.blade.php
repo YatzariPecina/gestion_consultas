@@ -17,9 +17,10 @@
         @endsession
     </div>
 
+    <h2>Prediccion</h2>
     @if(Session::has('processed_data'))
         <ul>
-            @foreach(Session::get('output') as $key => $value)
+            @foreach(Session::get('processed_data') as $key => $value)
                 <li>{{ $key }}: {{ $value }}</li>
             @endforeach
         </ul>
