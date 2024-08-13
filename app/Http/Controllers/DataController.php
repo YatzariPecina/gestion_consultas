@@ -69,7 +69,7 @@ class DataController extends Controller
 
             $escaped_json_data = escapeshellarg($json_data);
             // Ruta al script Python (asegúrate de usar la ruta correcta)
-            $comando = "python3 {$ruta}ScriptPrediction.py {$escaped_json_data}";
+            $comando = "python3 {$ruta}ScriptPrediction.py {$escaped_json_data} 2>&1";
 
             // Ejecuta el comando y captura la salida
             exec($comando, $output, $return_var);
