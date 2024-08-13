@@ -85,7 +85,7 @@ class DataController extends Controller
         }
 
         // Redirigir a la vista con valores vacíos si no se envió una solicitud POST
-        return view('ML.recibe-data', [
+        return view('ML.prediccion', [
             'output' => ''
         ]);
     }
