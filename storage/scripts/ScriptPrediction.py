@@ -28,11 +28,11 @@ def main():
                 sys.exit(1)  # Código de error
         else:
             print("No se recibieron datos.")
-            sys.exit(1)  # Código de error
+            sys.exit(2)  # Código de error
 
     except Exception as e:
         print(f"Error al procesar los datos: {e}")
-        sys.exit(1)  # Código de error
+        sys.exit(3)  # Código de error
 
 if __name__ == "__main__":
     main()
