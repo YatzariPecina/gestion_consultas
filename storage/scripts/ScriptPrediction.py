@@ -18,9 +18,11 @@ def main():
         # Leer los datos de los argumentos de línea de comandos
         if len(sys.argv) > 1:
             input_data = json.loads(sys.argv[2])  # Decodifica el JSON recibido
+            # Convertir las cadenas de texto que representan números a números enteros
+            input_data_numerico = [int(d) for d in input_data]
 
-            if isinstance(input_data, list) and len(input_data) > 0:
-                nuevos_datos_standar = scaler.transform(input_data)
+            if isinstance(input_data_numerico, list) and len(input_data_numerico) > 0:
+                nuevos_datos_standar = scaler.transform(input_data_numerico)
 
                 # Hacer la predicción
                 prediction = modelo.predict(nuevos_datos_standar)
