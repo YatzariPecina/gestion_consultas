@@ -18,19 +18,18 @@ class EstudioController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $datos = $request->validate([
+            'nombreDelEstudio' => 'required|string',
+            'precio' => 'required'
+        ]);
+
+        Estudio::create($datos);
+
+        return redirect()->route('estudios.index')->withSuccess('Estudio agregado con exito');
     }
 
     /**
@@ -62,6 +61,14 @@ class EstudioController extends Controller
      */
     public function destroy(Estudio $estudio)
     {
-        //
+        try {
+            //Eliminar al medico
+            $estudio->delete();
+
+            //Retornar a la vista para visualizar el cambio
+            return redirect()->route('estudios.index')->withSuccess('Estudio eliminado');
+        } catch (\Exception $th) {
+            return back()->withErrors(['error' => 'Hubo un problema al eliminar al medico. Por favor, inténtalo de nuevo.']);
+        }
     }
 }

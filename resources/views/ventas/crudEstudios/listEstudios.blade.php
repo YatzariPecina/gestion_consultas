@@ -35,6 +35,9 @@
                             Nombre del estudio
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Precio
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Acciones
                         </th>
                     </tr>
@@ -48,14 +51,17 @@
                             <td class="px-6 py-4">
                                 {{ $estudio->nombreDelEstudio }}
                             </td>
+                            <td class="px-6 py-4">
+                                {{ $estudio->precio }}
+                            </td>
                             <td class="px-6 py-4 flex">
-                                <a href="{{ route('pacientes.show', $estudio->id) }}"
-                                    class="font-semibold text-lg hover:bg-green-100 text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                <a href="#"
+                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                         class="fa-regular fa-eye"></i></a>
                                 <form action="{{ route('estudios.destroy', $estudio->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return confirm('¿Quieres eliminar este paciente?');"
+                                    <button type="submit" onclick="return confirm('Do you want to delete this user?');"
                                         class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                             class="fas fa-trash"></i>
                                     </button>
@@ -90,14 +96,21 @@
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form class="p-4 md:p-5" action="{{ route('servicios.storeTipoServicio') }}" method="POST">
+                <form class="p-4 md:p-5" action="{{ route('estudios.store') }}" method="POST">
                     @csrf
                     <div class="grid gap-4 mb-4 grid-cols-2">
                         <div class="col-span-2">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Tipo</label>
-                            <input type="text" name="tipo" id="tipo"
+                            <label for="nombreDelEstudio" class="block mb-2 text-sm font-medium text-gray-900 ">Nombre
+                                del estudio</label>
+                            <input type="text" name="nombreDelEstudio" id="nombreDelEstudio"
                                 class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                                placeholder="Tipo de servicio">
+                                placeholder="Escribe el nombre del estudio">
+                        </div>
+                        <div class="col-span-2">
+                            <label for="precio" class="block mb-2 text-sm font-medium text-gray-900 ">Precio</label>
+                            <input type="text" name="precio" id="precio"
+                                class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                                placeholder="Escribe el precio del estudio">
                         </div>
                     </div>
                     <button type="submit"

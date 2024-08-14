@@ -10,6 +10,7 @@ class Estudio extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nombreDelEstudio'
+        'nombreDelEstudio',
+        'precio'
     ];
 }
