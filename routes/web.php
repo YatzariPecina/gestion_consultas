@@ -11,14 +11,14 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\UsuarioController;
-use App\Models\Producto;
-use App\Models\Servicio;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome', [
-        'servicios' => Servicio::all()
-    ]);
+    if (auth()->check()) {
+        return redirect()->route('agenda');
+    } else {
+        return redirect()->route('login');
+    }
 });
 
 Route::get('/dashboard', function () {
