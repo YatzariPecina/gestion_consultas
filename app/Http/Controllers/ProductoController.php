@@ -41,19 +41,11 @@ class ProductoController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Producto $producto)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Producto $producto)
     {
-        //
+        return view('ventas.crudProductos.edit', compact('producto'));
     }
 
     /**
@@ -61,7 +53,14 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        //
+        $producto->update($request->validate([
+            'nombre' => 'required|string',
+            'marca' => 'required|string',
+            'costo' => 'required|string',
+            'cantidad' => 'required'
+        ]));
+        $producto->save();
+        return redirect()->route('productos.index')->withSuccess('Producto actualizado');
     }
 
     /**
@@ -69,6 +68,14 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        try {
+            //Eliminar el paciente de la base de datos
+            $producto->delete();
+
+            //Redirigir a el index con success
+            return redirect()->route('producto.index')->withSuccess('Producto eliminado');
+        } catch (\Exception $th) {
+            return back()->withErrors(['error' => 'Hubo un error al eliminar el producto']);
+        }
     }
 }

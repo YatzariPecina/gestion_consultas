@@ -73,7 +73,7 @@
                                 <form action="{{ route('productos.destroy', $producto->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return confirm('¿Quieres eliminar este medico?');"
+                                    <button type="submit" onclick="return confirm('¿Quieres eliminar este producto?');"
                                         class="font-medium text-blue-600 hover:bg-gray-200 py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                             class="fas fa-trash"></i>
                                     </button>
