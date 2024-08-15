@@ -29,7 +29,7 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
     Route::post('register', [RegisteredUserController::class, 'store']);
-    Route::resource('usuarios', UsuarioController::class);
+    Route::resource('users', UsuarioController::class);
     Route::resource('medicos', MedicoController::class);
     Route::resource('pacientes', PacienteController::class);
     Route::resource('citas', CitaController::class);

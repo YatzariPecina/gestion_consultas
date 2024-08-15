@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Medico;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,19 @@ class UserSeeder extends Seeder
             'email' => 'yatzaripecina@gmail.com',
             'rol' => 'Administrador',
             'password' => Hash::make('12345678')
+        ]);
+
+        $user = User::create([
+            'name' => 'Damaris Alexia Espinosa Castro',
+            'email' => 'damaris@gmail.com',
+            'rol' => 'Medico',
+            'password' => Hash::make('12345678')
+        ]);
+
+        Medico::create([
+            'name' => $user->name,
+            'email' => $user->email,
+            'user_id' => $user->id,
         ]);
     }
 }

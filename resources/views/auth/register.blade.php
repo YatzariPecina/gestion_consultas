@@ -57,7 +57,7 @@
                 <span class="text-black">{{ __('Registrar') }}</span>
             </x-primary-button>
             <x-primary-button class="ms-4 bg-gradient-to-t from-[#60ECEC] to-[#A6FFAF]">
-                <a href="{{ route('usuarios.index') }}" class="text-black">Cancelar</a>
+                <a href="{{ route('users.index') }}" class="text-black">Cancelar</a>
             </x-primary-button>
         </div>
     </form>

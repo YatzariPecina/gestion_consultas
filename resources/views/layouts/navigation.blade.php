@@ -36,12 +36,12 @@
                     @switch(Auth::user()->rol)
                         @case('Administrador')
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                                <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios')">
+                                <x-nav-link :href="route('users.index')" :active="request()->routeIs('users')">
                                     {{ __('Usuarios') }}
                                 </x-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                                <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
+                                <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('users')">
                                     {{ __('Medicos') }}
                                 </x-nav-link>
                             </div>
@@ -49,7 +49,7 @@
 
                         @case('Medico')
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                                <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
+                                <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('users')">
                                     {{ __('Medicos') }}
                                 </x-nav-link>
                             </div>
@@ -62,7 +62,7 @@
 
                         @case('Recepcionista')
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-end">
-                                <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('usuarios')">
+                                <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('users')">
                                     {{ __('Medicos') }}
                                 </x-nav-link>
                             </div>
@@ -142,8 +142,8 @@
         </div>
         @if (Auth::user()->rol == 'Administrador')
             <div class="pt-2 pb-3 space-y-1">
-                <x-responsive-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios')">
-                    {{ __('Usuarios') }}
+                <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users')">
+                    {{ __('users') }}
                 </x-responsive-nav-link>
             </div>
         @endif

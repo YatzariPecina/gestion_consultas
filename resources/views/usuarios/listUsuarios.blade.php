@@ -42,7 +42,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($usuarios as $usuario)
+                    @foreach ($users as $usuario)
                         <tr class="bg-white">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $usuario->name }}
@@ -54,16 +54,13 @@
                                 {{ $usuario->rol }}
                             </td>
                             <td class="px-6 py-4 flex">
-                                <a href="#"
-                                    class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
-                                        class="fa-regular fa-eye"></i></a>
-                                <a href="#"
+                                <a href="{{ route('users.edit', $usuario->id) }}"
                                     class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                         class="fa-regular fa-pen-to-square"></i></a>
-                                <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="post">
+                                <form action="{{ route('users.destroy', $usuario->id) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" onclick="return confirm('Do you want to delete this user?');"
+                                    <button type="submit" onclick="return confirm('¿Queres eliminar a este usuario?');"
                                         class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                             class="fas fa-trash"></i>
                                     </button>

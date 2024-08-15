@@ -52,6 +52,6 @@ class RegisteredUserController extends Controller
             ]);
         }
 
-        return redirect()->route('usuarios.index')->withSuccess('Usuario agregado con exito');
+        return redirect()->route('users.index')->withSuccess('Usuario agregado con exito');
     }
 }

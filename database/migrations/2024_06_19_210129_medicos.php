@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string('telefono')->nullable();
             $table->string('profesion')->nullable();
             $table->string('tipo_medico')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

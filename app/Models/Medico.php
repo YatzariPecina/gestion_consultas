@@ -14,6 +14,7 @@ class Medico extends Model
         'email',
         'telefono',
         'profesion',
-        'tipo_medico'
+        'tipo_medico',
+        'user_id'
     ];
 }

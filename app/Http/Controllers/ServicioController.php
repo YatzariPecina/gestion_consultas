@@ -88,6 +88,14 @@ class ServicioController extends Controller
      */
     public function destroy(Servicio $servicio)
     {
-        //
+        try {
+            //Eliminar al usuario
+            $servicio->delete();
+
+            //Retornar a la vista para visualizar el cambio
+            return redirect()->route('servicios.index')->withSuccess('Servicio eliminado');
+        } catch (\Exception $th) {
+            return back()->withErrors(['error' => 'Hubo un problema al eliminar el servicio. Por favor, inténtalo de nuevo.']);
+        }
     }
 }

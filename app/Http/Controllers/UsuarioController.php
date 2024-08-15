@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medico;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class UsuarioController extends Controller
 {
@@ -13,7 +16,7 @@ class UsuarioController extends Controller
     public function index()
     {
         return view('usuarios.listUsuarios', [
-            'usuarios' => User::latest()->get()
+            'users' => User::latest()->get()
         ]);
     }
 
@@ -46,7 +49,7 @@ class UsuarioController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('usuarios.editUser', compact('user'));
     }
 
     /**
@@ -54,7 +57,33 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        try {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
+                'rol' => ['required', 'string', 'max:255'],
+            ]);
+    
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'rol' => $request->rol,
+            ]);
+            $user->save();
+    
+            if ($request->rol === 'Medico') {
+                $medico = Medico::find($user->id, 'user_id');
+                $medico->update([
+                    'name' => $request->name,
+                    'email' => $request->email
+                ]);
+                $medico->save();
+            }
+    
+            return redirect()->route('users.index')->withSuccess('Usuario agregado con exito');
+        } catch (\Throwable $th) {
+            return redirect()->route('users.index')->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     /**
@@ -68,7 +97,7 @@ class UsuarioController extends Controller
             $user->delete();
 
             //Retornar a la vista para visualizar el cambio
-            return redirect()->route('usuarios.index')->withSuccess('usuario eliminado');
+            return redirect()->route('users.index')->withSuccess('Usuario eliminado');
         } catch (\Exception $th) {
             return back()->withErrors(['error' => 'Hubo un problema al eliminar al usuario. Por favor, inténtalo de nuevo.']);
         }
