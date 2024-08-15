@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Compra;
+use App\Models\Estudio;
+use App\Models\Producto;
+use App\Models\Servicio;
 use Illuminate\Http\Request;
 
 class CompraController extends Controller
@@ -22,7 +25,11 @@ class CompraController extends Controller
      */
     public function create()
     {
-        //
+        return view('ventas.crudPagos.register', [
+            'servicios' => Servicio::all(),
+            'estudios' => Estudio::all(),
+            'productos' => Producto::all()
+        ]);
     }
 
     /**

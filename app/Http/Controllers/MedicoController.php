@@ -7,9 +7,6 @@ use App\Http\Requests\UpdateMedicoRequest;
 use App\Models\Medico;
 use App\Models\User;
 use Illuminate\Database\QueryException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password;
 
 class MedicoController extends Controller
 {

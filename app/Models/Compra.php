@@ -12,7 +12,9 @@ class Compra extends Model
 
     protected $fillable = [
         'id_consulta',
-        'tipoPago'
+        'tipoPago',
+        'total',
+        'pagada'
     ];
 
     public function consulta()

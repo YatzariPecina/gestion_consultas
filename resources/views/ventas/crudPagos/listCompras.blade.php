@@ -2,7 +2,7 @@
     <div
         class="mt-6 bg-white p-6 mx-6 mb-6 rounded-2xl drop-shadow-md flex flex-col items-center sm:justify-between sm:flex-row">
         <h1 class="text-4xl font-extrabold mb-2 text-center sm:mb-0">Ventas</h1>
-        <a href="{{ route('pacientes.create') }}"
+        <a href="{{ route('ventas.create') }}"
             class= "bg-gradient-to-t from-[#60ECEC] to-[#A6FFAF] hover:bg-gradient-to-t hover:from-[#59d3d3] hover:to-[#9cf1a5] font-medium px-2 py-2.5 sm:px-5 me-2 mb-2 focus:outline-none text-center">Nueva
             venta</a>
     </div>
@@ -35,6 +35,12 @@
                             Tipo de compra
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Total a pagar
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Pagado
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Acciones
                         </th>
                     </tr>
@@ -47,6 +53,12 @@
                             </th>
                             <td class="px-6 py-4">
                                 {{ $compra->tipoPago }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $compra->total }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $compra->pagada }}
                             </td>
                             <td class="px-6 py-4 flex">
                                 <a href="{{ route('ventas.show', $compra->id) }}"

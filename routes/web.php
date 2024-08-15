@@ -41,6 +41,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('estudios', EstudioController::class)->except([
         'create'
     ]);
+    Route::get('/obtener-estudio/{id}', [EstudioController::class, 'obtenerEstudio']);
 
     Route::resource('ventas', CompraController::class);
 });
