@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cita;
 use App\Models\Consulta;
+use App\Models\Enfermera;
 use App\Models\Estudio;
 use App\Models\Paciente;
 use App\Models\Producto;
@@ -36,7 +37,8 @@ class ConsultaController extends Controller
             'paciente' => $paciente,
             'servicios' => Servicio::all(),
             'productos' => Producto::all(),
-            'estudios' => Estudio::all()
+            'estudios' => Estudio::all(),
+            'enfermeras' => Enfermera::all()
         ]);
     }
 
