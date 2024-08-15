@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\CompraController;
 use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\EstudioController;
@@ -37,9 +38,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/servicios/tipo-servicio/store', [ServicioController::class, 'storeTipoServicio'])->name('servicios.storeTipoServicio');
     Route::get('agenda', [CitaController::class, 'showAgenda'])->name('agenda');
 
-    Route::resource('/estudios', EstudioController::class)->except([
+    Route::resource('estudios', EstudioController::class)->except([
         'create'
     ]);
+
+    Route::resource('ventas', CompraController::class);
 });
 
 Route::get('/consultas/create/{cita}', [ConsultaController::class, 'create'])->name('consultas.create')->middleware(['auth', 'verified']);

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_consulta')->nullable();
             $table->string('tipoPago');
+            $table->boolean('pagada')->default(false);
             $table->timestamps();
 
             $table->foreign('id_consulta')->references('id')->on('consultas');

@@ -20,4 +20,9 @@ class Consulta extends Model
     {
         return $this->hasMany(Compra::class);
     }
+
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class, 'id_paciente');
+    }
 }
