@@ -68,16 +68,16 @@
                             </td>
                             <td class="px-6 py-4 flex flex-wrap">
                                 <a href="{{ route('medicos.show', $medico->id) }}"
-                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                    class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                     class="fa-regular fa-eye"></i></a>
                                 <a href="{{ route('medicos.edit', $medico->id) }}"
-                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                    class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                     class="fa-regular fa-pen-to-square"></i></a>
                                 <form action="{{ route('medicos.destroy', $medico->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" onclick="return confirm('¿Quieres eliminar este medico?');"
-                                        class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                        class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                             class="fas fa-trash"></i>
                                     </button>
                                 </form>

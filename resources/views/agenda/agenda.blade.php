@@ -42,21 +42,21 @@
                                     <td class="px-6 py-4 flex">
                                         @if (empty($cita->id_consulta))
                                         <a href="{{ route('consultas.create', $cita->id) }}"
-                                            class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Iniciar
+                                            class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Iniciar
                                             consulta</a>
                                         @else
                                         <a href="{{ route('consultas.show', $cita->id_consulta) }}"
-                                            class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Ver consulta</a>
+                                            class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1">Ver consulta</a>
                                         @endif
                                         <a href="#"
-                                            class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                            class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                                 class="fa-regular fa-pen-to-square"></i></a>
                                         <form action="#" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit"
                                                 onclick="return confirm('¿Quieres eliminar esta cita? Si ya fue realizada la consulta esta tambien se eliminará');"
-                                                class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                                class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                                     class="fas fa-trash"></i>
                                             </button>
                                         </form>

@@ -55,16 +55,16 @@
                             </td>
                             <td class="px-6 py-4 flex">
                                 <a href="#"
-                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                    class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                         class="fa-regular fa-eye"></i></a>
                                 <a href="#"
-                                    class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                    class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                         class="fa-regular fa-pen-to-square"></i></a>
                                 <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" onclick="return confirm('Do you want to delete this user?');"
-                                        class="font-medium text-blue-600 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
+                                        class="font-medium text-lg text-blue-600 hover:bg-green-100 hover:underline py-1 px-2 border border-blue-500 rounded-lg mr-1"><i
                                             class="fas fa-trash"></i>
                                     </button>
                                 </form>
