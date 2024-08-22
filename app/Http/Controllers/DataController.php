@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CsvUpdated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -75,13 +76,15 @@ class DataController extends Controller
             exec($comando, $output, $return_var);
 
             $ruta = storage_path('datasets/');
-            // Abre el archivo en modo apilamiento
+            // Abre el archivo en modo modificacion
             $manejadorArchivo = fopen($ruta . "predicciones.csv", 'w');
 
             // Manda al archivo la nueva información
             fputcsv($manejadorArchivo, $output);
 
             fclose($manejadorArchivo); // Cierra el archivo después de escribir
+            //Envia el evento
+            event(new CsvUpdated("CSV updated"));
 
         }
 

@@ -16,7 +16,6 @@
             </div>
         @endsession
     </div>
-
     <div>
         @foreach ($data as $row)
             <tr>
@@ -27,5 +26,15 @@
         @endforeach
     </div>
 </body>
+@push('scripts')
+    <script>
+        Echo.channel('csv-updates')
+            .listen('.csv-updated', (e) => {
+                console.log(e.message);
+                // Recarga la página para obtener los nuevos datos
+                location.reload();
+            });
+    </script>
+@endpush
 
 </html>
